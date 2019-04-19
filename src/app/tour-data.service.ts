@@ -1,13 +1,16 @@
 import {HttpClient} from "@angular/common/http";
-import {map} from "rxjs/operators";
+import {map, tap} from "rxjs/operators";
 import {Injectable} from "@angular/core";
 import {Parcel} from "./parcel.model";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class TourDataService {
+
+    private _parcels: BehaviorSubject<Parcel[]> = new BehaviorSubject<Parcel[]>([]);
 
     constructor(private http: HttpClient) {
 
@@ -23,13 +26,12 @@ export class TourDataService {
         return this.http.get('https://bpt-lab.org/smile/sphinx/getTours')
             .pipe(
                 map(resData => {
-                    let parcels = [];
-                    //let parcels = new BehaviorSubject<Parcel[]>();
+                    let newParcels = [];
                     for(let parcel of resData["packets"]){
                         const receiver = parcel["receiver"];
                         const depot = parcel["depot"];
                         const tour = parcel["tour"];
-                        parcels.push(new Parcel(
+                        newParcels.push(new Parcel(
                             receiver["receiverZIP"],
                             receiver["receiverCity"],
                             receiver["receiverStreetName"],
@@ -43,7 +45,10 @@ export class TourDataService {
                             parcel["id"]
                         ))
                     }
-                    return parcels;
+                    return newParcels;
+                }),
+                tap(parcels => {
+                    this._parcels.next(parcels);
                 })
             );
     }

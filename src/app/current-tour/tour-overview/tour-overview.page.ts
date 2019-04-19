@@ -19,7 +19,7 @@ export class TourOverviewPage implements OnInit {
 
   ionViewWillEnter() {
       this.toursService.fetchTours()
-          .subscribe();
+          .subscribe((data) => console.log(data));
   }
 
   /*reorderItems(indexes){
