@@ -1,0 +1,37 @@
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+                <ion-card color="light">
+                    <ion-card-header>
+                        <ion-card-title>
+                            <h2>Stop 1 out of 7 - Microdepot</h2>
+                            <h1><b>{{loadedTour.addresses[0][0]}}</b>
+                                {{ loadedTour.addresses[0][1]}}
+                                {{ loadedTour.addresses[0][2]}}</h1>
+                            <ion-img src="https://image.freepik.com/free-vector/store-icon_24911-1362.jpg"></ion-img>
+                        </ion-card-title>
+                    </ion-card-header>
+                    <ion-card-content>
+                        <p *ngIf="loadedTour.addresses[0][4]==='false'"> Parcel ID: {{loadedTour.addresses[0][2]}}</p>
+                        <p *ngIf="loadedTour.addresses[0][4]==='false'"> Time frame: 4 pm - 6 pm</p>
+                        <!-- TODO Timer -->
+                        <p *ngIf="loadedTour.addresses[0][4]==='false'">Parcel on board</p>
+                        <ion-button size="large" fill="outline" expand="block" href="https://www.google.com/maps/dir/?api=1&destination=stahnsdorfer-strasse-144a&dir_action=navigate">
+                            <ion-icon name="navigate"></ion-icon>
+                            Navigate
+                        </ion-button>
+                        <ion-button size="large" fill="outline" expand="block">
+                            <ion-icon name="hand"></ion-icon>
+                            Handover
+                        </ion-button>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

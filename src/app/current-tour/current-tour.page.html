@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-button fill="clear" (click)="onBackHome()" slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
+    </ion-button>
+    <ion-title>Current Tour</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="current-tour-overview">
+        <ion-label>Tour Overview</ion-label>
+        <ion-icon name="list"></ion-icon>
+      </ion-tab-button>
+      <ion-tab-button tab="current-tour-guided">
+        <ion-label>Guided Tour</ion-label>
+        <ion-icon name="navigate"></ion-icon>
+
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+</ion-content>
