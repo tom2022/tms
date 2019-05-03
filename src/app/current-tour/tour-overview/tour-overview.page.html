@@ -7,33 +7,50 @@
       <ion-col size="12" size-sm="8" offset-sm="2" text-center>
         <ion-card [color]="'danger'">
           <ion-card-header>
-            7 Stops Left (2 Microdepots, 5 Receivers)
-            <!--TODO see all stops-->
+            {{getNumberOfStopsLeft()}}/{{loadedTour.numberOfStops}} Stopps absolviert
+            <br>
+            Preis: {{loadedTour.price}}€
           </ion-card-header>
         </ion-card>
-        <ion-card *ngFor="let address of loadedTour.addresses"
-                  [color]="address[4]==='true' ? 'dark' : 'light'">
+        <ion-card *ngFor="let stop of loadedTour.tourStop"
+                  [color]="stop.stopType==='Depot' ? 'dark' : 'light'">
           <ion-card-header>
-            <ion-card-title *ngIf="address[4]==='true'">
-              <ion-icon name="repeat"></ion-icon>
-              {{ address[1]}}, {{address[2]}}
-            </ion-card-title>
-            <ion-card-title *ngIf="address[4]==='false'">
-              <ion-icon name="pin"></ion-icon>
-              {{ address[1]}}, {{address[2]}}
+            <ion-card-title>
+              <ion-icon name="repeat" *ngIf="stop.stopType==='Depot'"></ion-icon>
+              <ion-icon name="pin" *ngIf="stop.stopType==='Receiver'"></ion-icon>
+              {{ stop.firstName}} {{stop.lastName}},
+              {{stop.streetName}} {{stop.streetNumber}},
+              {{stop.zip}} {{stop.city}}
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <p>{{address[0]}}</p>
-            <p *ngIf="address[4]==='false'"> Parcel ID: {{address[3]}}</p>
-            <p *ngIf="address[4]==='false'"> Time frame: 4 pm - 6 pm</p>
+            <div *ngIf="stop.stopType==='Receiver'">
+              <ul>
+                <li>
+                  Anzahl der Pakete:{{getParcelData(stop.id).length}}
+                </li>
+                <li *ngFor="let parcel of getParcelData(stop.id)">
+                  <ion-text>Paket-ID: {{parcel.sscc}} </ion-text>
+                  <ion-text *ngIf="isParcelLoaded(parcel.depotID)===true" color="success">
+                    <ion-icon name="checkmark-circle"></ion-icon>
+                    an Bord
+                  </ion-text>
+                  <ion-text *ngIf="isParcelLoaded(parcel.depotID)===false" color="warning">
+                    <ion-icon name="alert"></ion-icon>
+                    nicht an Bord
+                  </ion-text>
+                </li>
+              </ul>
+            </div>
+            <!--<p *ngIf="stop.stopType==='Receiver'"> Parcel ID: {{getParcelData(stop.id)}}</p>
+            <p *ngIf="address[4]==='false'"> Time frame: 4 pm - 6 pm</p>-->
             <!-- TODO Timer -->
-            <p *ngIf="address[4]==='false'">Parcel on board</p>
-            <ion-button fill="outline" href="https://www.google.com/maps/dir/?api=1&destination=stahnsdorfer-strasse-144a&dir_action=navigate">
-              Navigate
+            <!--<p *ngIf="address[4]==='false'">Parcel on board</p>-->
+            <ion-button fill="outline" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}">
+              Navigiere
             </ion-button>
-            <ion-button fill="outline">
-              Handover
+            <ion-button fill="outline" [routerLink]="['./', mockSSCC]">
+              Übergabe
             </ion-button>
           </ion-card-content>
         </ion-card>

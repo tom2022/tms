@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CurrentTourService} from "../current-tour.service";
-import {CurrentTour} from "../current-tour.model";
+import {Tour} from "../../tour.model";
 import {TourDataService} from "../../tour-data.service";
+
 
 @Component({
   selector: 'app-tour-overview',
@@ -9,7 +10,7 @@ import {TourDataService} from "../../tour-data.service";
   styleUrls: ['./tour-overview.page.scss'],
 })
 export class TourOverviewPage implements OnInit {
-    loadedTour: CurrentTour;
+    loadedTour: Tour;
 
   constructor(private currentTourService: CurrentTourService, private toursService: TourDataService) { }
 
@@ -18,9 +19,45 @@ export class TourOverviewPage implements OnInit {
   }
 
   ionViewWillEnter() {
+      //TODO implement in current tour service
       this.toursService.fetchTours()
           .subscribe((data) => console.log(data));
   }
+
+    getNumberOfStopsLeft() {
+      let counter = 0;
+      for(let stop of this.loadedTour.tourStop) {
+          if(stop.stopCompleted === false){
+              counter++;
+          }
+      }
+      counter = this.loadedTour.numberOfStops - counter;
+      return counter;
+    }
+
+    getParcelData(receiverID){
+      const parcels: object[] = [];
+      for(let parcel of this.loadedTour.parcelData) {
+          if(parcel.receiverID === receiverID){
+              parcels.push(parcel);
+          }
+      }
+      return parcels;
+    }
+
+    isParcelLoaded(depotID){
+      for(let stop of this.loadedTour.tourStop) {
+          if(stop.id === depotID){
+              return stop.stopCompleted !== false;
+          }
+      }
+    }
+
+    getNavigationLink(streetName, streetNumber, zip, city){
+      return "https://www.google.com/maps/dir/?api=1&destination="
+          + streetName + "+" + streetNumber + "+" +
+          zip + "+" + city + "&dir_action=navigate";
+    }
 
   /*reorderItems(indexes){
       console.log(indexes);

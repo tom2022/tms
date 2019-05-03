@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CurrentTourService} from "../current-tour.service";
-import {CurrentTour} from "../current-tour.model";
+import {Tour} from "../../tour.model";
 
 @Component({
   selector: 'app-tour-guided',
@@ -8,7 +8,7 @@ import {CurrentTour} from "../current-tour.model";
   styleUrls: ['./tour-guided.page.scss'],
 })
 export class TourGuidedPage implements OnInit {
-    loadedTour: CurrentTour;
+    loadedTour: Tour;
 
   constructor(private currentTourService: CurrentTourService) {
 
