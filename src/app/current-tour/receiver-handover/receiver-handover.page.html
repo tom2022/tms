@@ -1,12 +1,37 @@
 <ion-header>
-  <ion-toolbar color="light">
-    <ion-button fill="clear" (click)="onBackCurrentTourOverview()" slot="start">
-      <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
-    </ion-button>
-    <ion-title>Receiver Handover</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="light">
+        <ion-button fill="clear" (click)="onBackCurrentTourOverview()" slot="start">
+            <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
+        </ion-button>
+        <ion-title>Paketübergabe</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+                <ion-card-header>
+                    <ion-card-title>
+                        <h1 *ngIf="getParcels().length === 1"> 1 Paket</h1>
+                        <h1 *ngIf="getParcels().length !== 1"> {{getParcels().length}} Pakete</h1>
+                    </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <ion-item *ngFor="let parcel of getParcels()">
+                        <ion-label>{{parcel}}</ion-label>
+                        <ion-checkbox slot="end" checked="true" mode="ios"></ion-checkbox>
+                    </ion-item>
+                    <br>
+                    <p>Enter PIN here</p>
+                    <br>
+                    <ion-button size="large" fill="outline" expand="block" disabled (click)="onConfirmParcel" mode="ios">
+                        Übergabe bestätigen
+                    </ion-button>
+                </ion-card-content>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
 
 </ion-content>

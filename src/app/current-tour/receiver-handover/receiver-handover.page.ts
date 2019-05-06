@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {NavController} from "@ionic/angular";
 import {CurrentTourService} from "../current-tour.service";
@@ -9,7 +9,7 @@ import {CurrentTourService} from "../current-tour.service";
   styleUrls: ['./receiver-handover.page.scss'],
 })
 export class ReceiverHandoverPage implements OnInit {
-    myID;
+    parcelIDs: string;
 
   constructor(
       private route: ActivatedRoute,
@@ -17,12 +17,15 @@ export class ReceiverHandoverPage implements OnInit {
       private currentTourService: CurrentTourService) { }
 
   ngOnInit() {
-      this.myID = this.route.snapshot.paramMap.get('parcelID');
-      console.log(this.myID);
+      this.parcelIDs = this.route.snapshot.paramMap.get('parcelID');
   }
 
   onBackCurrentTourOverview() {
       this.navCtrl.back();
+  }
+
+  getParcels(){
+      return this.parcelIDs.split("%");
   }
 
 }
