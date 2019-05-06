@@ -28,6 +28,10 @@ const routes: Routes = [
         ]
     },
     {
+        path: 'receiver-handover/:parcelID',
+        loadChildren: './receiver-handover/receiver-handover.module#ReceiverHandoverPageModule'
+    },
+    {
         path: '',
         redirectTo: '/current-tour/tabs/tour-overview',
         pathMatch: 'full'

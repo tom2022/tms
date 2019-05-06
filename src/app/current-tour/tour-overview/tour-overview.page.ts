@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CurrentTourService} from "../current-tour.service";
 import {Tour} from "../../tour.model";
 import {TourDataService} from "../../tour-data.service";
+import {Parcel} from "../../parcel.model";
 
 
 @Component({
@@ -20,8 +21,8 @@ export class TourOverviewPage implements OnInit {
 
   ionViewWillEnter() {
       //TODO implement in current tour service
-      this.toursService.fetchTours()
-          .subscribe((data) => console.log(data));
+      /*this.toursService.fetchTours()
+          .subscribe((data) => console.log(data));*/
   }
 
     getNumberOfStopsLeft() {
@@ -36,7 +37,7 @@ export class TourOverviewPage implements OnInit {
     }
 
     getParcelData(receiverID){
-      const parcels: object[] = [];
+      const parcels: Parcel[] = [];
       for(let parcel of this.loadedTour.parcelData) {
           if(parcel.receiverID === receiverID){
               parcels.push(parcel);
@@ -59,8 +60,18 @@ export class TourOverviewPage implements OnInit {
           zip + "+" + city + "&dir_action=navigate";
     }
 
-  /*reorderItems(indexes){
-      console.log(indexes);
-  }*/
-
+    getParcelsOfStop(receiverID){
+      let parcels: Parcel[];
+      parcels = this.getParcelData(receiverID);
+      let parcelString: string = '';
+      for(let parcel of parcels){
+          if (parcelString == ''){
+              parcelString = parcel.sscc;
+          }
+          else {
+              parcelString = parcelString + '%' + parcel.sscc;
+          }
+      }
+      return parcelString;
+    }
 }

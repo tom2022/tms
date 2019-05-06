@@ -22,7 +22,7 @@ export class TourDataService {
         console.log(resData);
     }));*/
 
-    fetchTours() {
+    /*fetchTours() {
         return this.http.get('https://bpt-lab.org/smile/sphinx/getTours')
             .pipe(
                 map(resData => {
@@ -51,5 +51,5 @@ export class TourDataService {
                     this._parcels.next(parcels);
                 })
             );
-    }
+    }*/
 }

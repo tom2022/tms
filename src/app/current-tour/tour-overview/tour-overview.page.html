@@ -25,11 +25,10 @@
           </ion-card-header>
           <ion-card-content>
             <div *ngIf="stop.stopType==='Receiver'">
-              <ul>
-                <li>
+                <p>
                   Anzahl der Pakete:{{getParcelData(stop.id).length}}
-                </li>
-                <li *ngFor="let parcel of getParcelData(stop.id)">
+                </p>
+                <p *ngFor="let parcel of getParcelData(stop.id)">
                   <ion-text>Paket-ID: {{parcel.sscc}} </ion-text>
                   <ion-text *ngIf="isParcelLoaded(parcel.depotID)===true" color="success">
                     <ion-icon name="checkmark-circle"></ion-icon>
@@ -39,19 +38,25 @@
                     <ion-icon name="alert"></ion-icon>
                     nicht an Bord
                   </ion-text>
-                </li>
-              </ul>
+                </p>
+              <ion-button fill="outline" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}">
+                Navigiere
+              </ion-button>
+              <ion-button fill="outline" [routerLink]="['../../../../receiver-handover', getParcelsOfStop(stop.id)]">
+                Übergabe
+              </ion-button>
+            </div>
+            <div *ngIf="stop.stopType==='Depot'">
+              <ion-button fill="outline" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}">
+                Navigiere
+              </ion-button>
+              <ion-button fill="outline" [routerLink]="['../../../../depot-handover', 23423]"> <!-- TODO -->
+                Abholung
+              </ion-button>
             </div>
             <!--<p *ngIf="stop.stopType==='Receiver'"> Parcel ID: {{getParcelData(stop.id)}}</p>
             <p *ngIf="address[4]==='false'"> Time frame: 4 pm - 6 pm</p>-->
-            <!-- TODO Timer -->
-            <!--<p *ngIf="address[4]==='false'">Parcel on board</p>-->
-            <ion-button fill="outline" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}">
-              Navigiere
-            </ion-button>
-            <ion-button fill="outline" [routerLink]="['./', mockSSCC]">
-              Übergabe
-            </ion-button>
+            <!-- TODO Timer/ TimeSlots -->
           </ion-card-content>
         </ion-card>
       </ion-col>
