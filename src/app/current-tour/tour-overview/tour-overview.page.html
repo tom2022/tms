@@ -43,7 +43,7 @@
               <ion-button fill="outline" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
                 Navigiere
               </ion-button>
-              <ion-button fill="outline" [routerLink]="['../../../../receiver-handover', getParcelsOfStop(stop.id)]" mode="ios">
+              <ion-button fill="outline" [routerLink]="['../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id)]" mode="ios">
                 Übergabe
               </ion-button>
             </div>

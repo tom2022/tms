@@ -60,16 +60,18 @@ export class TourOverviewPage implements OnInit {
           zip + "+" + city + "&dir_action=navigate";
     }
 
-    getParcelsOfStop(receiverID){
+    getUndeliveredParcelsOfStop(receiverID){
       let parcels: Parcel[];
       parcels = this.getParcelData(receiverID);
       let parcelString: string = '';
       for(let parcel of parcels){
-          if (parcelString == ''){
-              parcelString = parcel.sscc;
-          }
-          else {
-              parcelString = parcelString + '%' + parcel.sscc;
+          if(parcel.isDelivered === false ){
+              if (parcelString == ''){
+                  parcelString = parcel.sscc;
+              }
+              else {
+                  parcelString = parcelString + '%' + parcel.sscc;
+              }
           }
       }
       return parcelString;
