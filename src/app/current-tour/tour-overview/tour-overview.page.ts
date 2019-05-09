@@ -12,18 +12,31 @@ import {Parcel} from "../../parcel.model";
 })
 export class TourOverviewPage implements OnInit {
     loadedTour: Tour;
+    loadedTours: Tour[];
 
   constructor(private currentTourService: CurrentTourService, private toursService: TourDataService) { }
 
   ngOnInit() {
-      this.loadedTour = this.currentTourService.currentTour;
+      //this.loadedTour = this.currentTourService.currentTour;
   }
 
   ionViewWillEnter() {
       //TODO implement in current tour service
       /*this.toursService.fetchTours()
-          .subscribe((data) => console.log(data));*/
+          .pipe(
+              take(1)
+              )
+          .subscribe(tours => this.loadedTour = tours[0]);*/
+      this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
   }
+
+    getMapViewLink() {
+      let link = "https://www.google.com/maps/dir/";
+      for(let stop of this.loadedTour.tourStop){
+          link = link + stop.streetName + "+" + stop.streetNumber + "+" + stop.zip + "+" + stop.city + "/";
+      }
+      return link;
+    }
 
     getNumberOfStopsLeft() {
       let counter = 0;

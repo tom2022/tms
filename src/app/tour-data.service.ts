@@ -3,6 +3,9 @@ import {map, tap} from "rxjs/operators";
 import {Injectable} from "@angular/core";
 import {Parcel} from "./parcel.model";
 import {BehaviorSubject} from "rxjs";
+import {Tour} from "./tour.model";
+import {TourStop} from "./tour-stop.model";
+import {ExampleDataService} from "./example-data.service";
 
 @Injectable({
     providedIn: 'root'
@@ -10,11 +13,11 @@ import {BehaviorSubject} from "rxjs";
 
 export class TourDataService {
 
-    private _parcels: BehaviorSubject<Parcel[]> = new BehaviorSubject<Parcel[]>([]);
-
-    constructor(private http: HttpClient) {
+    constructor(private http: HttpClient, private exampleTourService: ExampleDataService) {
 
     }
+
+    private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.exampleTourService.exampleTour]);
 
     /*send tour id To Sphinx
     return this.http.post('someURL', tourID)
@@ -22,34 +25,65 @@ export class TourDataService {
         console.log(resData);
     }));*/
 
-    /*fetchTours() {
-        return this.http.get('https://bpt-lab.org/smile/sphinx/getTours')
+    get tours() {
+        return this._tours.asObservable();
+    }
+
+    fetchTours() {
+        return this.http
+            .get('https://bpt-lab.org/smile/sphinx/getTours')
             .pipe(
                 map(resData => {
-                    let newParcels = [];
-                    for(let parcel of resData["packets"]){
-                        const receiver = parcel["receiver"];
-                        const depot = parcel["depot"];
-                        const tour = parcel["tour"];
-                        newParcels.push(new Parcel(
-                            receiver["receiverZIP"],
-                            receiver["receiverCity"],
-                            receiver["receiverStreetName"],
-                            receiver["receiverStreetNumber"],
-                            depot["depotStreetName"],
-                            depot["depotStreetNumber"],
-                            depot["depotCity"],
-                            depot["id"],
-                            tour["id"],
-                            parcel["sscc"],
-                            parcel["id"]
+                    let newTours = [];
+                    for(let tour of resData["tours"]){
+                        const stops = tour["stops"];
+                        const parcels = tour["packets"];
+                        const metaData = tour["tourMetaData"];
+                        let newStops = [];
+                        let newParcels = [];
+                        for(let stop of stops){
+                            newStops.push(new TourStop(
+                                stop.stopType,
+                                stop.id,
+                                stop.lastName,
+                                stop.firstName,
+                                stop.streetName,
+                                stop.streetNumber,
+                                stop.zip,
+                                stop.city,
+                                stop.country,
+                                false,
+                                stop.organization,
+                                stop.receiverLevel,
+                                stop.receiverRemark,
+                                stop.depotCategory
+                            ))
+                        }
+                        for(let parcel of parcels) {
+                            newParcels.push(new Parcel(
+                                parcel.receiverID,
+                                parcel.sscc,
+                                parcel.startTime,
+                                parcel.plannedTimeframeStart,
+                                parcel.depotID,
+                                false
+                            ))
+                        }
+                        newTours.push(new Tour(
+                            metaData.tourID,
+                            metaData.tourStartTime,
+                            metaData.numberOfStops,
+                            metaData.estimatedTime,
+                            metaData.price,
+                            newStops,
+                            newParcels
                         ))
                     }
-                    return newParcels;
+                    return newTours;
                 }),
-                tap(parcels => {
-                    this._parcels.next(parcels);
+                tap(tours => {
+                    this._tours.next(tours);
                 })
             );
-    }*/
+    }
 }

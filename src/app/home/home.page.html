@@ -3,6 +3,9 @@
     <ion-title>
       myTMS
     </ion-title>
+    <ion-button (click)="onRefresh()" size="small">
+      <ion-icon name="refresh" size="large" slot="end"></ion-icon>
+    </ion-button>
     <!-- TODO png-->
   </ion-toolbar>
 </ion-header>
@@ -12,11 +15,11 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12" size-sm="8" offset-sm="2" text-center>
-          <ion-card color='primary' disabled="false" routerLink="/current-tour/tabs/current-tour-overview">
+          <ion-card color="primary" disabled="false" routerLink="/current-tour/tabs/current-tour-overview">
             <ion-card-header>
               <ion-card-title>
-                <ion-icon name="alert"></ion-icon>
-                Current Tour
+                <ion-icon name="alarm"></ion-icon>
+                Aktuelle Tour
               </ion-card-title>
               <!-- TODO Preview -->
             </ion-card-header>
@@ -30,22 +33,30 @@
               <!-- Vorgeschlagener Start/ Timer -->
             </ion-card-content>
           </ion-card>
-          <ion-card color="primary">
+          <ion-card color="light">
             <ion-card-header>
               <ion-card-title>
-                <ion-icon name="alarm"></ion-icon>
-                Upcoming Tours
+                <ion-icon name="list"></ion-icon>
+                Alle Touren
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
               <p>3 Tours</p>
             </ion-card-content>
           </ion-card>
-          <ion-card color="primary">
+          <ion-card color="light">
             <ion-card-header>
               <ion-card-title>
                 <ion-icon name="create"></ion-icon>
-                Edit Profile
+                Profil bearbeiten
+              </ion-card-title>
+            </ion-card-header>
+          </ion-card>
+          <ion-card color="light">
+            <ion-card-header>
+              <ion-card-title>
+                <ion-icon name="call"></ion-icon>
+                 Kontakt
               </ion-card-title>
             </ion-card-header>
           </ion-card>

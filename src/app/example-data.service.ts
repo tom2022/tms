@@ -1,12 +1,13 @@
-import { Injectable } from '@angular/core';
-import {Tour} from "../tour.model";
+import {Tour} from "./tour.model";
+import {Injectable} from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
-export class CurrentTourService {
 
-  private _ctour: Tour  = {
+export class ExampleDataService {
+
+    private _etour: Tour  = {
         tourID : '3249898432',
         tourStartTime : new Date('2019-07-11T09:00:00'),
         numberOfStops: 7,
@@ -171,9 +172,12 @@ export class CurrentTourService {
         ]
     };
 
-    get currentTour() {
-        return this._ctour;
+    constructor() {
     }
 
-  constructor() { }
+    get exampleTour() {
+        return this._etour;
+    }
+
+
 }

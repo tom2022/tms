@@ -32,10 +32,15 @@ const routes: Routes = [
         loadChildren: './receiver-handover/receiver-handover.module#ReceiverHandoverPageModule'
     },
     {
+        path: 'depot-handover',
+        loadChildren: './depot-handover/depot-handover.module#DepotHandoverPageModule'
+    },
+    {
         path: '',
         redirectTo: '/current-tour/tabs/tour-overview',
         pathMatch: 'full'
     }
+
 ];
 
 @NgModule({
