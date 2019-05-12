@@ -8,9 +8,14 @@ import {TourDataService} from "../tour-data.service";
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(private toursService: TourDataService) { }
 
   ngOnInit() {
   }
+
+  onLoadData() {
+    this.toursService.fetchTours();
+  }
+
 
 }

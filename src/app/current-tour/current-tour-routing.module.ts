@@ -32,7 +32,7 @@ const routes: Routes = [
         loadChildren: './receiver-handover/receiver-handover.module#ReceiverHandoverPageModule'
     },
     {
-        path: 'depot-handover',
+        path: 'depot-handover/:depotParcelIDs',
         loadChildren: './depot-handover/depot-handover.module#DepotHandoverPageModule'
     },
     {

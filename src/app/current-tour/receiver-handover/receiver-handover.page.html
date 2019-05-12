@@ -1,6 +1,6 @@
 <ion-header>
     <ion-toolbar color="light">
-        <ion-button fill="clear" (click)="onBackCurrentTourOverview()" slot="start">
+        <ion-button fill="clear" (click)="onBack()" slot="start">
             <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
         </ion-button>
         <ion-title>Paketübergabe</ion-title>
@@ -20,12 +20,12 @@
                 <ion-card-content>
                     <ion-item *ngFor="let parcel of getParcels()">
                         <ion-label>{{parcel}}</ion-label>
-                        <ion-checkbox slot="end" checked="true" mode="ios"></ion-checkbox>
+                        <ion-checkbox slot="end" checked="true" mode="ios" (ionChange)="updateParcel($event, parcel)"></ion-checkbox>
                     </ion-item>
                     <br>
                     <p>Enter PIN here</p>
                     <br>
-                    <ion-button size="large" fill="outline" expand="block" disabled (click)="onConfirmParcel" mode="ios">
+                    <ion-button size="large" fill="outline" expand="block" [disabled]="submitButtonDisabled" (click)="onConfirmParcelHandover()" mode="ios">
                         Übergabe bestätigen
                     </ion-button>
                 </ion-card-content>

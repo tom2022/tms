@@ -59,6 +59,16 @@ export class TourOverviewPage implements OnInit {
       return parcels;
     }
 
+    getDepotParcelData(depotID){
+      const parcels: Parcel[] = [];
+      for(let parcel of this.loadedTour.parcelData) {
+          if(parcel.depotID === depotID) {
+              parcels.push(parcel);
+          }
+      }
+      return parcels;
+    }
+
     isParcelLoaded(depotID){
       for(let stop of this.loadedTour.tourStop) {
           if(stop.id === depotID){
@@ -80,6 +90,23 @@ export class TourOverviewPage implements OnInit {
       for(let parcel of parcels){
           if(parcel.isDelivered === false ){
               if (parcelString == ''){
+                  parcelString = parcel.sscc;
+              }
+              else {
+                  parcelString = parcelString + '%' + parcel.sscc;
+              }
+          }
+      }
+      return parcelString;
+    }
+
+    getParcelsOfDepot(depotID){
+      let parcels: Parcel[];
+      parcels = this.getDepotParcelData(depotID);
+      let parcelString: string = '';
+      for(let parcel of parcels) {
+          if(parcel.isDelivered === false){
+              if(parcelString == ''){
                   parcelString = parcel.sscc;
               }
               else {

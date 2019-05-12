@@ -59,7 +59,7 @@
               <ion-button fill="outline" color="light" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
                 Navigiere
               </ion-button>
-              <ion-button fill="outline" color="light" [routerLink]="['../../../../depot-handover']" mode="ios">
+              <ion-button fill="outline" color="light" [routerLink]="['../../../../depot-handover', getParcelsOfDepot(stop.id)]" mode="ios">
                 Abholung
               </ion-button>
             </div>

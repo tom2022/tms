@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {TourDataService} from "../tour-data.service";
 
 @Component({
   selector: 'app-home',
@@ -8,10 +7,6 @@ import {TourDataService} from "../tour-data.service";
 })
 export class HomePage {
 
-  constructor(private toursService: TourDataService) { }
-
-  onRefresh() {
-      this.toursService.fetchTours();
-  }
+  constructor() { }
 
 }
