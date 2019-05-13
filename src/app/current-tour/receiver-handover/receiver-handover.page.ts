@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {NavController} from "@ionic/angular";
-import {CurrentTourService} from "../current-tour.service";
+import {TourDataService} from "../../tour-data.service";
+import {Tour} from "../../tour.model";
 
 @Component({
   selector: 'app-receiver-handover',
@@ -12,16 +13,54 @@ export class ReceiverHandoverPage implements OnInit {
     parcelIDs: string;
     checkedParcels: string[] = [];
     submitButtonDisabled = false;
+    loadedTour: Tour;
 
   constructor(
       private route: ActivatedRoute,
       private navCtrl: NavController,
-      private currentTourService: CurrentTourService) { }
+      private toursService: TourDataService) { }
 
   ngOnInit() {
       this.parcelIDs = this.route.snapshot.paramMap.get('parcelID');
       this.checkedParcels = this.getParcels();
       console.log(this.checkedParcels);
+  }
+
+  ionViewWillEnter() {
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+        console.log(this.loadedTour);
+  }
+
+  getReceiverName() {
+      return this.getReceiverInformation('name');
+  }
+
+  getReceiverStreet() {
+      return this.getReceiverInformation('street');
+  }
+
+  getReceiverCity() {
+      return this.getReceiverInformation('city');
+  }
+
+  getReceiverInformation(info) {
+      for(let parcel of this.loadedTour.parcelData){
+          if(this.getParcels()[0] === parcel.sscc){
+              for(let stop of this.loadedTour.tourStop){
+                  if(parcel.receiverID === stop.id && stop.stopType === 'Receiver'){
+                      if(info === 'name'){
+                          return stop.firstName + ' ' + stop.lastName
+                      }
+                      if(info === 'street'){
+                          return stop.streetName + ' ' + stop.streetNumber
+                      }
+                      if(info === 'city'){
+                          return stop.zip + ' ' + stop.city
+                      }
+                  }
+              }
+          }
+      }
   }
 
   onBack() {
@@ -47,7 +86,7 @@ export class ReceiverHandoverPage implements OnInit {
   }
 
   onConfirmParcelHandover() {
-      this.checkedParcels;
+      this.checkedParcels; //TODO update
       this.onBack();
   }
 
