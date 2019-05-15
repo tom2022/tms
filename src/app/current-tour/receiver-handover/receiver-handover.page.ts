@@ -43,6 +43,10 @@ export class ReceiverHandoverPage implements OnInit {
       return this.getReceiverInformation('city');
   }
 
+  getReceiverId() {
+      return this.getReceiverInformation('id');
+  }
+
   getReceiverInformation(info) {
       for(let parcel of this.loadedTour.parcelData){
           if(this.getParcels()[0] === parcel.sscc){
@@ -56,6 +60,9 @@ export class ReceiverHandoverPage implements OnInit {
                       }
                       if(info === 'city'){
                           return stop.zip + ' ' + stop.city
+                      }
+                      if(info === 'id'){
+                          return stop.id
                       }
                   }
               }
@@ -86,7 +93,12 @@ export class ReceiverHandoverPage implements OnInit {
   }
 
   onConfirmParcelHandover() {
-      this.checkedParcels; //TODO update
+      for(let checkedParcel of this.checkedParcels){
+          this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
+      }
+      if(this.checkedParcels.length = this.getParcels().length){
+          this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getReceiverId()).subscribe();
+      }
       this.onBack();
   }
 

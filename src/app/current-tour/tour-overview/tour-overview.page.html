@@ -20,7 +20,8 @@
           </ion-card-content>
         </ion-card>
         <h1>Tourstopps</h1>
-        <ion-card *ngFor="let stop of loadedTour.tourStop"
+        <div *ngFor="let stop of loadedTour.tourStop">
+        <ion-card *ngIf="stop.stopCompleted === false"
                   [color]="stop.stopType==='Depot' ? 'primary' : 'light'">
           <ion-card-header>
             <ion-card-title>
@@ -68,6 +69,7 @@
             <!-- TODO Timer/ TimeSlots -->
           </ion-card-content>
         </ion-card>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

@@ -5,6 +5,7 @@ export class Parcel {
         public startTime: object,
         public plannedTimeframeStart: object,
         public depotID: string,
+        public tourID: string,
         public isDelivered: boolean) {
     }
 }

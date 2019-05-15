@@ -12,7 +12,6 @@ import {Parcel} from "../../parcel.model";
 })
 export class TourOverviewPage implements OnInit {
     loadedTour: Tour;
-    loadedTours: Tour[];
 
   constructor(private currentTourService: CurrentTourService, private toursService: TourDataService) { }
 
@@ -39,6 +38,7 @@ export class TourOverviewPage implements OnInit {
     }
 
     getNumberOfStopsLeft() {
+      console.log(this.loadedTour);
       let counter = 0;
       for(let stop of this.loadedTour.tourStop) {
           if(stop.stopCompleted === false){

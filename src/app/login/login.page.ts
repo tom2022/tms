@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TourDataService} from "../tour-data.service";
+
 
 @Component({
   selector: 'app-login',
@@ -14,8 +15,7 @@ export class LoginPage implements OnInit {
   }
 
   onLoadData() {
-    this.toursService.fetchTours();
+    this.toursService.fetchTours().subscribe(tours => console.log(tours));
   }
-
 
 }
