@@ -114,14 +114,14 @@ export class TourDataService {
         }));
     }
 
-    updateCompletedStops(tourID, receiverID){
+    updateCompletedStops(tourID, stopID){
         return this.tours.pipe(take(1), tap( tours => {
             const tourIndex = tours.findIndex(t => t.tourID === tourID);
             const updatedTours = [...tours];
             const oldTour = updatedTours[tourIndex];
             let updatedStops = [];
             for(let s of oldTour.tourStop){
-                if(s.id === receiverID){
+                if(s.id === stopID){
                     updatedStops.push(new TourStop(s.stopType, s.id, s.lastName, s.firstName, s.streetName, s.streetNumber, s.zip, s.city, true, s.country, s.organization, s.receiverLevel, s.receiverRemark, s.depotCategory));
                 }
                 else{
@@ -138,7 +138,6 @@ export class TourDataService {
             );
             this._tours.next(updatedTours);
             }
-
         ))
     }
 }

@@ -26,7 +26,7 @@ export class DepotHandoverPage implements OnInit {
   }
 
     ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
     }
 
   onBack() {
@@ -45,6 +45,10 @@ export class DepotHandoverPage implements OnInit {
         return this.getDepotInformation('city');
     }
 
+    getDepotId() {
+      return this.getDepotInformation('id');
+    }
+
     getDepotInformation(info) {
         for(let parcel of this.loadedTour.parcelData){
             if(this.getParcels()[0] === parcel.sscc){
@@ -59,6 +63,9 @@ export class DepotHandoverPage implements OnInit {
                         if(info === 'city'){
                             return stop.zip + ' ' + stop.city
                         }
+                        if(info === 'id'){
+                            return stop.id
+                        }
                     }
                 }
             }
@@ -69,23 +76,23 @@ export class DepotHandoverPage implements OnInit {
         return this.parcelIDs.split("%");
     }
 
-    updateParcel(e:any ,parcel) {
+    updateParcel(e:any, parcel) {
+      console.log(this.loadedTour.tourID);
         if(e.target.checked){
             this.checkedParcels.push(parcel);
             this.submitButtonDisabled = false;
         }
         else {
             this.checkedParcels = this.checkedParcels.filter(s => s !== parcel);
-            if(this.checkedParcels.length == 0){
-                this.submitButtonDisabled = true;
             }
-        }
-        console.log(this.checkedParcels);
+        if(this.checkedParcels.length !== this.getParcels().length){
+            this.submitButtonDisabled = true;
+            }
     }
+
 
     onConfirmParcelHandover() {
-        this.checkedParcels;
-        this.onBack();
+      this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getDepotId()).subscribe();
+      this.onBack();
     }
-
 }

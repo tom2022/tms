@@ -38,7 +38,6 @@ export class TourOverviewPage implements OnInit {
     }
 
     getNumberOfStopsLeft() {
-      console.log(this.loadedTour);
       let counter = 0;
       for(let stop of this.loadedTour.tourStop) {
           if(stop.stopCompleted === false){
@@ -52,8 +51,6 @@ export class TourOverviewPage implements OnInit {
     getParcelData(receiverID){
       const parcels: Parcel[] = [];
       for(let parcel of this.loadedTour.parcelData) {
-          console.log(parcel);
-          console.log(receiverID);
           if(parcel.receiverID === receiverID){
               if(parcel.isDelivered === false){
                   parcels.push(parcel);
