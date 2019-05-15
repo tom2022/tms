@@ -26,7 +26,7 @@ export class TourOverviewPage implements OnInit {
               take(1)
               )
           .subscribe(tours => this.loadedTour = tours[0]);*/
-      this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+      this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
   }
 
     getMapViewLink() {
@@ -52,8 +52,12 @@ export class TourOverviewPage implements OnInit {
     getParcelData(receiverID){
       const parcels: Parcel[] = [];
       for(let parcel of this.loadedTour.parcelData) {
+          console.log(parcel);
+          console.log(receiverID);
           if(parcel.receiverID === receiverID){
-              parcels.push(parcel);
+              if(parcel.isDelivered === false){
+                  parcels.push(parcel);
+              }
           }
       }
       return parcels;
@@ -69,12 +73,18 @@ export class TourOverviewPage implements OnInit {
       return parcels;
     }
 
-    isParcelLoaded(depotID){
-      for(let stop of this.loadedTour.tourStop) {
-          if(stop.id === depotID){
-              return stop.stopCompleted !== false;
+    areParcelsLoaded(receiverID){
+      for(let parcel of this.getParcelData(receiverID)){
+          for(let stop of this.loadedTour.tourStop){
+              if(parcel.depotID === stop.id){
+                  if(stop.stopCompleted === false){
+                      return true;
+                  }
+              }
           }
+
       }
+      return false;
     }
 
     getNavigationLink(streetName, streetNumber, zip, city){
