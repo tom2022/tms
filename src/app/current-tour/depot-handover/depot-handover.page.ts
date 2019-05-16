@@ -26,7 +26,7 @@ export class DepotHandoverPage implements OnInit {
   }
 
     ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
     }
 
   onBack() {
@@ -96,7 +96,7 @@ export class DepotHandoverPage implements OnInit {
       for(let parcel of this.loadedTour.parcelData){
           const today = new Date();
           const d = today.toISOString();
-          this.toursService.sendParcelDepotHandoverConfirmation(parcel, d);
+          this.toursService.sendParcelDepotHandoverConfirmation(parcel.sscc, d);
       }
       this.onBack();
     }
