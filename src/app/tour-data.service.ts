@@ -29,12 +29,32 @@ export class TourDataService {
         return this._tours.asObservable();
     }
 
+    sendParcelDepotHandoverConfirmation(parcelID, date) {
+        return this.http.post('Xhttps://bpt-lab.org/smile/caz/tms/pick-up-reported', {
+            sscc: parcelID,
+            pickDate: date
+        }).subscribe( (response) => {
+            console.log(response);
+        })
+    }
+
+    sendParcelReceiverHandoverConfirmation(parcelID, date) {
+        console.log(parcelID, date);
+        return this.http.post('Xhttps://bpt-lab.org/smile/caz/tms/delivery-reported', {
+            sscc: parcelID,
+            receiveDate: date
+        }).subscribe((response) => {
+            console.log(response);
+        });
+    }
+
     fetchTours() {
         return this.http
             .get('https://bpt-lab.org/smile/sphinx/getTours')
             .pipe(
                 map(resData => {
                     let newTours = [];
+                    newTours.push(this.exampleTourService.exampleTour);
                     for(let tour of resData["tours"]){
                         const stops = tour["stops"];
                         const parcels = tour["packets"];

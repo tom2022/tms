@@ -15,7 +15,7 @@ export class LoginPage implements OnInit {
   }
 
   onLoadData() {
-    this.toursService.fetchTours().subscribe(tours => console.log(tours));
+    this.toursService.fetchTours().subscribe();
   }
 
 }

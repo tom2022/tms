@@ -95,12 +95,14 @@ export class ReceiverHandoverPage implements OnInit {
   onConfirmParcelHandover() {
       for(let checkedParcel of this.checkedParcels){
           this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
+          const today = new Date();
+          const d = today.toISOString();
+          this.toursService.sendParcelReceiverHandoverConfirmation(checkedParcel, d);
       }
-      console.log(this.checkedParcels.length);
-      console.log(this.getParcels().length);
       if(this.checkedParcels.length === this.getParcels().length){
           this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getReceiverId()).subscribe();
       }
+
       this.onBack();
   }
 

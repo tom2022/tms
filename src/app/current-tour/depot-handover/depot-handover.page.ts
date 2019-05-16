@@ -93,6 +93,11 @@ export class DepotHandoverPage implements OnInit {
 
     onConfirmParcelHandover() {
       this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getDepotId()).subscribe();
+      for(let parcel of this.loadedTour.parcelData){
+          const today = new Date();
+          const d = today.toISOString();
+          this.toursService.sendParcelDepotHandoverConfirmation(parcel, d);
+      }
       this.onBack();
     }
 }

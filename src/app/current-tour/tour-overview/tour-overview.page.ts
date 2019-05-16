@@ -16,16 +16,9 @@ export class TourOverviewPage implements OnInit {
   constructor(private currentTourService: CurrentTourService, private toursService: TourDataService) { }
 
   ngOnInit() {
-      //this.loadedTour = this.currentTourService.currentTour;
   }
 
   ionViewWillEnter() {
-      //TODO implement in current tour service
-      /*this.toursService.fetchTours()
-          .pipe(
-              take(1)
-              )
-          .subscribe(tours => this.loadedTour = tours[0]);*/
       this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
   }
 
