@@ -27,7 +27,7 @@ export class ReceiverHandoverPage implements OnInit {
   }
 
   ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
         console.log(this.loadedTour);
   }
 
@@ -102,7 +102,6 @@ export class ReceiverHandoverPage implements OnInit {
       if(this.checkedParcels.length === this.getParcels().length){
           this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getReceiverId()).subscribe();
       }
-
       this.onBack();
   }
 

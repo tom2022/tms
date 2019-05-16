@@ -1,4 +1,4 @@
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {map, take, tap} from "rxjs/operators";
 import {Injectable} from "@angular/core";
 import {Parcel} from "./parcel.model";
@@ -30,20 +30,27 @@ export class TourDataService {
     }
 
     sendParcelDepotHandoverConfirmation(parcelID, date) {
-        return this.http.post('Xhttps://bpt-lab.org/smile/caz/tms/pick-up-reported', {
+        console.log(parcelID, date);
+        let headers = new HttpHeaders();
+        headers.append('Content-Type','application/json');
+        return this.http.post('https://bpt-lab.org/smile/caz/tms/pick-up-reported', {
             sscc: parcelID,
             pickDate: date
-        }).subscribe( (response) => {
+        }, { headers: headers }).subscribe( (response) => {
             console.log(response);
         })
     }
 
     sendParcelReceiverHandoverConfirmation(parcelID, date) {
         console.log(parcelID, date);
-        return this.http.post('Xhttps://bpt-lab.org/smile/caz/tms/delivery-reported', {
-            sscc: parcelID,
-            receiveDate: date
-        }).subscribe((response) => {
+        let headers = new HttpHeaders({
+            'Content-Type': 'application/json'
+        });
+        let options = { headers: headers };
+        return this.http.post('https://bpt-lab.org/smile/caz/tms/delivery-reported', {
+            "sscc": parcelID,
+            "receiveDate": date
+        }, options).subscribe((response) => {
             console.log(response);
         });
     }
