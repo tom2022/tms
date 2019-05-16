@@ -118,7 +118,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:10:00'),
                 depotID: '900',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             },
             {
@@ -127,7 +127,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:20:00'),
                 depotID: '900',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             },
             {
@@ -136,7 +136,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:20:00'),
                 depotID: '900',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             },
             {
@@ -145,7 +145,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:30:00'),
                 depotID: '900',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             },
             {
@@ -154,7 +154,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:35:00'),
                 depotID: '900',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             },
             {
@@ -163,7 +163,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:45:00'),
                 depotID: '901',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             },
             {
@@ -172,7 +172,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:45:00'),
                 depotID: '901',
-                tourID: '82743829',
+                tourID: '3249898432',
                 isDelivered: false
             }
         ],
