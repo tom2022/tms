@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {CurrentTourService} from "../current-tour.service";
 import {Tour} from "../../tour.model";
 
 @Component({
@@ -10,12 +9,12 @@ import {Tour} from "../../tour.model";
 export class TourGuidedPage implements OnInit {
     loadedTour: Tour;
 
-  constructor(private currentTourService: CurrentTourService) {
+  constructor() {
 
   }
 
   ngOnInit() {
-      this.loadedTour = this.currentTourService.currentTour;
+
   }
 
 }

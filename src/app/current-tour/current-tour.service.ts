@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+/*import { Injectable } from '@angular/core';
 import {Tour} from "../tour.model";
 
 @Injectable({
@@ -177,3 +177,4 @@ export class CurrentTourService {
 
   constructor() { }
 }
+*/

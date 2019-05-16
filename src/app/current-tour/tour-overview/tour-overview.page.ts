@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {CurrentTourService} from "../current-tour.service";
 import {Tour} from "../../tour.model";
 import {TourDataService} from "../../tour-data.service";
 import {Parcel} from "../../parcel.model";
@@ -13,7 +12,7 @@ import {Parcel} from "../../parcel.model";
 export class TourOverviewPage implements OnInit {
     loadedTour: Tour;
 
-  constructor(private currentTourService: CurrentTourService, private toursService: TourDataService) { }
+  constructor(private toursService: TourDataService) { }
 
   ngOnInit() {
   }
