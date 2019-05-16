@@ -17,8 +17,8 @@ export class TourDataService {
 
     }
 
-    //private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.exampleTourService.exampleTour]);
-    private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([]);
+    private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.exampleTourService.exampleTour]);
+    //private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([]);
     /*send tour id To Sphinx
     return this.http.post('someURL', tourID)
     .pipe(tap( resDate => {
@@ -99,7 +99,7 @@ export class TourDataService {
                     updatedParcels.push(new Parcel(p.receiverID, p.sscc, p.startTime, p.plannedTimeframeStart, p.depotID, p.tourID, true));
                 }
                 else{
-                    updatedParcels.push(p);//new Parcel(p.receiverID, p.sscc, p.startTime, p.plannedTimeframeStart, p.depotID, p.tourID, p.isDelivered));
+                    updatedParcels.push(p);
                 }
             }
             updatedTours[tourIndex] = new Tour(
@@ -125,7 +125,7 @@ export class TourDataService {
                     updatedStops.push(new TourStop(s.stopType, s.id, s.lastName, s.firstName, s.streetName, s.streetNumber, s.zip, s.city, true, s.country, s.organization, s.receiverLevel, s.receiverRemark, s.depotCategory));
                 }
                 else{
-                    updatedStops.push(s);//new TourStop(s.stopType, s.id, s.lastName, s.firstName, s.streetName, s.streetNumber, s.zip, s.city, s.stopCompleted, s.country, s.organization, s.receiverLevel, s.receiverRemark, s.depotCategory)); //push (s)
+                    updatedStops.push(s);
                 }
             }
             updatedTours[tourIndex] = new Tour(

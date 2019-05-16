@@ -9,10 +9,9 @@ export class ExampleDataService {
 
     private _etour: Tour  = {
         tourID : '3249898432',
-        tourStartTime : new Date('2019-07-11T09:00:00'),
         numberOfStops: 7,
         estimatedTime: 50,
-        price: 11.53,
+        price: 1153,
         tourStop: [
             {
                 stopType: 'Depot',
@@ -23,8 +22,8 @@ export class ExampleDataService {
                 streetNumber: '146',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
                 stopCompleted: false,
+                country: 'DE',
                 organization: 'Kiosk am Bahnhof',
                 depotCategory: 'Kiosk'
             },
@@ -37,8 +36,8 @@ export class ExampleDataService {
                 streetNumber: '18',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
                 stopCompleted: false,
+                country: 'DE',
                 receiverLevel: 2,
                 receiverRemark: 'Bitte 2x klingeln'
             },
@@ -51,8 +50,8 @@ export class ExampleDataService {
                 streetNumber: '11',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
                 stopCompleted: false,
+                country: 'DE',
                 receiverLevel: 1,
                 receiverRemark: 'Hinterhaus'
             },
@@ -65,8 +64,8 @@ export class ExampleDataService {
                 streetNumber: '55',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
                 stopCompleted: false,
+                country: 'DE',
                 receiverLevel: 3,
                 receiverRemark: ''
             },
@@ -79,8 +78,8 @@ export class ExampleDataService {
                 streetNumber: '39',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
                 stopCompleted: false,
+                country: 'DE',
                 depotCategory: 'Kiosk'
             },
             {
@@ -106,8 +105,8 @@ export class ExampleDataService {
                 streetNumber: '35',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
                 stopCompleted: false,
+                country: 'DE',
                 receiverLevel: 0,
                 receiverRemark: ''
             }
@@ -119,6 +118,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:10:00'),
                 depotID: '900',
+                tourID: '82743829',
                 isDelivered: false
             },
             {
@@ -127,6 +127,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:20:00'),
                 depotID: '900',
+                tourID: '82743829',
                 isDelivered: false
             },
             {
@@ -135,6 +136,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:20:00'),
                 depotID: '900',
+                tourID: '82743829',
                 isDelivered: false
             },
             {
@@ -143,6 +145,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:30:00'),
                 depotID: '900',
+                tourID: '82743829',
                 isDelivered: false
             },
             {
@@ -151,6 +154,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:35:00'),
                 depotID: '900',
+                tourID: '82743829',
                 isDelivered: false
             },
             {
@@ -159,6 +163,7 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:45:00'),
                 depotID: '901',
+                tourID: '82743829',
                 isDelivered: false
             },
             {
@@ -167,9 +172,11 @@ export class ExampleDataService {
                 startTime: new Date('2019-07-11T09:00:00'),
                 plannedTimeframeStart: new Date('2019-07-11T09:45:00'),
                 depotID: '901',
+                tourID: '82743829',
                 isDelivered: false
             }
-        ]
+        ],
+        tourStartTime : new Date('2019-07-11T09:00:00')
     };
 
     constructor() {

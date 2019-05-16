@@ -26,7 +26,7 @@ export class DepotHandoverPage implements OnInit {
   }
 
     ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
     }
 
   onBack() {
