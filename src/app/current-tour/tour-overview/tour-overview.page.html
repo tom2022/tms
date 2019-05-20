@@ -5,63 +5,85 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" text-center>
-        <ion-card>
-          <ion-card-header>
-            <ion-card-title>
-              {{getNumberOfStopsLeft()}}/{{loadedTour.numberOfStops}} Stopps absolviert
-                <!--selbst ausrechnen + success screen-->
-              <br>
-              {{loadedTour.price/100}}€
-            </ion-card-title>
-          </ion-card-header>
-          <ion-card-content>
-            <ion-button fill="outline" href="{{getMapViewLink()}}" mode="ios">
-              Kartenansicht
-            </ion-button>
-          </ion-card-content>
-        </ion-card>
-        <h1>Tourstopps</h1>
-        <div *ngFor="let stop of loadedTour.tourStop">
-            <ion-card *ngIf="stop.stopCompleted === false"
-                      [color]="stop.stopType==='Depot' ? 'primary' : 'light'">
-              <ion-card-header>
-                <ion-card-title>
-                  <ion-icon name="repeat" *ngIf="stop.stopType==='Depot'"></ion-icon>
-                  <ion-icon name="pin" *ngIf="stop.stopType==='Receiver'"></ion-icon>
-                  {{ stop.firstName}} {{stop.lastName}},
-                  {{stop.streetName}} {{stop.streetNumber}},
-                  {{stop.zip}} {{stop.city}}
-                </ion-card-title>
-              </ion-card-header>
-              <ion-card-content>
-                  <div *ngIf="stop.stopType==='Receiver'">
-                    <p>
-                      Anzahl der Pakete:{{getParcelData(stop.id).length}}
-                    </p>
-                    <p *ngFor="let parcel of getParcelData(stop.id)">
-                      <ion-text>Paket-ID: {{parcel.sscc}} </ion-text>
-                    </p>
-                    <br>
-                  <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
-                    Navigiere
-                  </ion-button>
-                  <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" [routerLink]="['../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id)]" mode="ios">
-                    Übergabe
-                  </ion-button>
-                </div>
-                <div *ngIf="stop.stopType==='Depot'">
-                  <ion-button fill="outline" color="light" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
-                    Navigiere
-                  </ion-button>
-                  <ion-button fill="outline" color="light" [routerLink]="['../../../../depot-handover', getParcelsOfDepot(stop.id)]" mode="ios">
-                    Abholung
-                  </ion-button>
-                </div>
-                <!--<p *ngIf="stop.stopType==='Receiver'"> Parcel ID: {{getParcelData(stop.id)}}</p>
-                <p *ngIf="address[4]==='false'"> Time frame: 4 pm - 6 pm</p>-->
-                <!-- TODO Timer/ TimeSlots -->
-              </ion-card-content>
-            </ion-card>
+        <div *ngIf="getNumberOfStopsLeft() !== loadedTour.tourStop.length">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{getNumberOfStopsLeft()}}/{{loadedTour.tourStop.length}} Stopps absolviert
+                  <!--selbst ausrechnen + success screen-->
+                <br>
+                {{loadedTour.price/100}}€
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button fill="outline" href="{{getMapViewLink()}}" mode="ios">
+                Kartenansicht
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+          <h1>Tourstopps</h1>
+          <div *ngFor="let stop of loadedTour.tourStop">
+              <ion-card *ngIf="stop.stopCompleted === false"
+                        [color]="stop.stopType==='Depot' ? 'primary' : 'light'">
+                <ion-card-header>
+                  <ion-card-title>
+                    <ion-icon name="repeat" *ngIf="stop.stopType==='Depot'"></ion-icon>
+                    <ion-icon name="pin" *ngIf="stop.stopType==='Receiver'"></ion-icon>
+                    {{ stop.firstName}} {{stop.lastName}},
+                    {{stop.streetName}} {{stop.streetNumber}},
+                    {{stop.zip}} {{stop.city}}
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+                    <div *ngIf="stop.stopType==='Receiver'">
+                      <p>
+                        Anzahl der Pakete:{{getParcelData(stop.id).length}}
+                      </p>
+                      <p *ngFor="let parcel of getParcelData(stop.id)">
+                        <ion-text>Paket-ID: {{parcel.sscc}} </ion-text>
+                      </p>
+                      <br>
+                    <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
+                      Navigiere
+                    </ion-button>
+                    <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" [routerLink]="['../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id)]" mode="ios">
+                      Übergabe
+                    </ion-button>
+                  </div>
+                  <div *ngIf="stop.stopType==='Depot'">
+                    <ion-button fill="outline" color="light" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
+                      Navigiere
+                    </ion-button>
+                    <ion-button fill="outline" color="light" [routerLink]="['../../../../depot-handover', getParcelsOfDepot(stop.id)]" mode="ios">
+                      Abholung
+                    </ion-button>
+                  </div>
+                  <!--<p *ngIf="stop.stopType==='Receiver'"> Parcel ID: {{getParcelData(stop.id)}}</p>
+                  <p *ngIf="address[4]==='false'"> Time frame: 4 pm - 6 pm</p>-->
+                  <!-- TODO Timer/ TimeSlots -->
+                </ion-card-content>
+              </ion-card>
+          </div>
+        </div>
+        <div *ngIf="getNumberOfStopsLeft() === loadedTour.tourStop.length">
+          <ion-card color="success">
+            <ion-card-header>
+              <ion-card-title>
+                <ion-icon name="checkmark-circle-outline" size="large"></ion-icon>
+                <br>
+                <br>
+                <b>Juhuu!!!</b>
+                <br>
+                <br>
+                Du hast die Tour erfolgreich abgeschlossen!
+                <br>
+                <br>
+                Du erhältst {{loadedTour.price/100}}€.
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+            </ion-card-content>
+          </ion-card>
         </div>
       </ion-col>
     </ion-row>
