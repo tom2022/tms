@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-button fill="clear" (click)="onBackHome()" slot="start">
+      <ion-icon slot="icon-only" name="arrow-back" ></ion-icon>
+    </ion-button>
+    <ion-title>Alle Touren</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2" text-center>
+        <div *ngFor="let tour of getTours(); let i = index">
+          <ion-card color="light">
+            <ion-card-header>
+              <ion-card-title>
+                Tour {{i+1}}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-button fill="outline" mode="ios">
+                Tour ausfahren
+              </ion-button>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

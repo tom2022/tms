@@ -14,7 +14,6 @@ export class TourOverviewPage implements OnInit {
     loadedTour: Tour;
 
   constructor(private toursService: TourDataService, private iab: InAppBrowser) { }
-
   ngOnInit() {
   }
 
