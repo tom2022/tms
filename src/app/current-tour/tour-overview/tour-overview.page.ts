@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Tour} from "../../tour.model";
 import {TourDataService} from "../../tour-data.service";
 import {Parcel} from "../../parcel.model";
+import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
 
 
 @Component({
@@ -12,7 +13,7 @@ import {Parcel} from "../../parcel.model";
 export class TourOverviewPage implements OnInit {
     loadedTour: Tour;
 
-  constructor(private toursService: TourDataService) { }
+  constructor(private toursService: TourDataService, private iab: InAppBrowser) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,7 @@ export class TourOverviewPage implements OnInit {
       for(let stop of this.loadedTour.tourStop){
           link = link + stop.streetName + "+" + stop.streetNumber + "+" + stop.zip + "+" + stop.city + "/";
       }
-      return link;
+      this.iab.create(link, '_system');
     }
 
     getNumberOfStopsLeft() {
@@ -77,9 +78,10 @@ export class TourOverviewPage implements OnInit {
     }
 
     getNavigationLink(streetName, streetNumber, zip, city){
-      return "https://www.google.com/maps/dir/?api=1&destination="
+      const link = "https://www.google.com/maps/dir/?api=1&destination="
           + streetName + "+" + streetNumber + "+" +
           zip + "+" + city + "&dir_action=navigate";
+        this.iab.create(link, '_system');
     }
 
     getUndeliveredParcelsOfStop(receiverID){

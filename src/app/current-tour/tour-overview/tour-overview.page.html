@@ -16,7 +16,7 @@
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <ion-button fill="outline" href="{{getMapViewLink()}}" mode="ios">
+              <ion-button fill="outline" (click)="getMapViewLink()" mode="ios">
                 Kartenansicht
               </ion-button>
             </ion-card-content>
@@ -43,7 +43,7 @@
                         <ion-text>Paket-ID: {{parcel.sscc}} </ion-text>
                       </p>
                       <br>
-                    <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
+                    <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
                       Navigiere
                     </ion-button>
                     <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" [routerLink]="['../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id)]" mode="ios">
@@ -51,7 +51,7 @@
                     </ion-button>
                   </div>
                   <div *ngIf="stop.stopType==='Depot'">
-                    <ion-button fill="outline" color="light" href="{{getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)}}" mode="ios">
+                    <ion-button fill="outline" color="light" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
                       Navigiere
                     </ion-button>
                     <ion-button fill="outline" color="light" [routerLink]="['../../../../depot-handover', getParcelsOfDepot(stop.id)]" mode="ios">
