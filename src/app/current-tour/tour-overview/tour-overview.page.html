@@ -5,18 +5,6 @@
   <ion-grid>
     <ion-row>
       <ion-col size="12" size-sm="8" offset-sm="2" text-center>
-          <div *ngIf="loadedTour === undefined">
-              <ion-card color="danger">
-                  <ion-card-header>
-                      <ion-card-title>
-                          <ion-icon name="warning" size="large"></ion-icon>
-                          <br>
-                          <br>
-                          Für Dich ist aktuell leider keine Tour verfügbar.
-                      </ion-card-title>
-                  </ion-card-header>
-              </ion-card>
-          </div>
         <div *ngIf="getNumberOfStopsLeft() !== loadedTour.tourStop.length">
           <ion-card>
             <ion-card-header>

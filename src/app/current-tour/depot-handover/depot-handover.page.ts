@@ -26,7 +26,7 @@ export class DepotHandoverPage implements OnInit {
   }
 
     ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
     }
 
   onBack() {
@@ -93,10 +93,12 @@ export class DepotHandoverPage implements OnInit {
 
     onConfirmParcelHandover() {
       this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getDepotId()).subscribe();
-      for(let parcel of this.loadedTour.parcelData){
-          const today = new Date();
-          const d = today.toISOString();
-          this.toursService.sendParcelDepotHandoverConfirmation(parcel.sscc, d);
+      if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR'){ //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
+          for(let parcel of this.loadedTour.parcelData){
+              const today = new Date();
+              const d = today.toISOString();
+              this.toursService.sendParcelDepotHandoverConfirmation(parcel.sscc, d);
+          }
       }
       this.onBack();
     }

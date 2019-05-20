@@ -8,7 +8,7 @@ import {Injectable} from "@angular/core";
 export class ExampleDataService {
 
     private _etour: Tour  = {
-        tourID : '3249898432',
+        tourID : '3249898432EXAMPLETOUR',
         numberOfStops: 7,
         estimatedTime: 50,
         price: 1153,

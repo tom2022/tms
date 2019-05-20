@@ -27,7 +27,7 @@ export class ReceiverHandoverPage implements OnInit {
   }
 
   ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[1]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
         console.log(this.loadedTour);
   }
 
@@ -93,14 +93,16 @@ export class ReceiverHandoverPage implements OnInit {
   }
 
   onConfirmParcelHandover() {
-      for(let checkedParcel of this.checkedParcels){
-          this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
-          const today = new Date();
-          const d = today.toISOString();
-          this.toursService.sendParcelReceiverHandoverConfirmation(checkedParcel, d);
-      }
       if(this.checkedParcels.length === this.getParcels().length){
           this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getReceiverId()).subscribe();
+      }
+      if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR') { //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
+          for(let checkedParcel of this.checkedParcels){
+              this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
+              const today = new Date();
+              const d = today.toISOString();
+              this.toursService.sendParcelReceiverHandoverConfirmation(checkedParcel, d);
+          }
       }
       this.onBack();
   }
