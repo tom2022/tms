@@ -15,15 +15,6 @@ const routes: Routes = [
                         loadChildren: './tour-overview/tour-overview.module#TourOverviewPageModule'
                     }
                 ]
-            },
-            {
-                path: 'current-tour-guided',
-                children: [
-                    {
-                        path: '',
-                        loadChildren: './tour-guided/tour-guided.module#TourGuidedPageModule'
-                    }
-                ]
             }
         ]
     },
