@@ -27,7 +27,7 @@
             <ion-checkbox slot="end" checked="true" mode="ios" (ionChange)="updateParcel($event, parcel)"></ion-checkbox>
           </ion-item>
           <br>
-          <p>Enter PIN here</p>
+          <ion-input type="tel" maxlength="4" placeholder="Gib hier die Pin des Depots ein" [(ngModel)]="pin"> </ion-input>
           <br>
           <ion-button size="large" fill="outline" expand="block" [disabled]="submitButtonDisabled" (click)="onConfirmParcelHandover()" mode="ios">
             Abholung bestätigen
