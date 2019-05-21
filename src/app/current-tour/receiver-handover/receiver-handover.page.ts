@@ -14,6 +14,7 @@ export class ReceiverHandoverPage implements OnInit {
     checkedParcels: string[] = [];
     submitButtonDisabled = false;
     loadedTour: Tour;
+    tourNumber: number;
 
   constructor(
       private route: ActivatedRoute,
@@ -22,12 +23,13 @@ export class ReceiverHandoverPage implements OnInit {
 
   ngOnInit() {
       this.parcelIDs = this.route.snapshot.paramMap.get('parcelID');
+      this.tourNumber = +this.route.snapshot.paramMap.get('tourNumber');
       this.checkedParcels = this.getParcels();
       console.log(this.checkedParcels);
   }
 
   ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
         console.log(this.loadedTour);
   }
 
@@ -96,14 +98,16 @@ export class ReceiverHandoverPage implements OnInit {
       if(this.checkedParcels.length === this.getParcels().length){
           this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getReceiverId()).subscribe();
       }
-      if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR') { //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
-          for(let checkedParcel of this.checkedParcels){
-              this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
+        //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
+      for(let checkedParcel of this.checkedParcels){
+          this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
+          if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR'){
               const today = new Date();
               const d = today.toISOString();
               this.toursService.sendParcelReceiverHandoverConfirmation(checkedParcel, d);
           }
       }
+
       this.onBack();
   }
 

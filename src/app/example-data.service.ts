@@ -115,8 +115,8 @@ export class ExampleDataService {
             {
                 receiverID: '123',
                 sscc: '43878478347',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:10:00'),
+                startTime: '2019-06-11T13:45Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:00Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -124,8 +124,8 @@ export class ExampleDataService {
             {
                 receiverID: '234',
                 sscc: '43878478234',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:20:00'),
+                startTime: '2019-06-11T13:45Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -133,8 +133,8 @@ export class ExampleDataService {
             {
                 receiverID: '234',
                 sscc: '43333478234',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:20:00'),
+                startTime: '2019-06-11T13:45Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -142,8 +142,8 @@ export class ExampleDataService {
             {
                 receiverID: '345',
                 sscc: '10033478235',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:30:00'),
+                startTime: '2019-06-11T14:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:10Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -151,8 +151,8 @@ export class ExampleDataService {
             {
                 receiverID: '456',
                 sscc: '31013478235',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:35:00'),
+                startTime: '2019-06-11T14:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:13Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -160,8 +160,8 @@ export class ExampleDataService {
             {
                 receiverID: '567',
                 sscc: '44213478162',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:45:00'),
+                startTime: '2019-06-11T14:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 depotID: '901',
                 tourID: '3249898432',
                 isDelivered: false
@@ -169,14 +169,14 @@ export class ExampleDataService {
             {
                 receiverID: '567',
                 sscc: '74213438163',
-                startTime: new Date('2019-07-11T09:00:00'),
-                plannedTimeframeStart: new Date('2019-07-11T09:45:00'),
+                startTime: '2019-06-11T14:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 depotID: '901',
                 tourID: '3249898432',
                 isDelivered: false
             }
         ],
-        tourStartTime : new Date('2019-07-11T09:00:00')
+        tourStartTime : '2019-06-11T13:45Z[UTC]'
     };
 
     constructor() {

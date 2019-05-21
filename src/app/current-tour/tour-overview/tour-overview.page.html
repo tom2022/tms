@@ -46,7 +46,7 @@
                     <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
                       Navigiere
                     </ion-button>
-                    <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" [routerLink]="['../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id)]" mode="ios">
+                    <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" [routerLink]="['../../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id), tourNumber]" mode="ios">
                       Übergabe
                     </ion-button>
                   </div>
@@ -54,7 +54,7 @@
                     <ion-button fill="outline" color="light" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
                       Navigiere
                     </ion-button>
-                    <ion-button fill="outline" color="light" [routerLink]="['../../../../depot-handover', getParcelsOfDepot(stop.id)]" mode="ios">
+                    <ion-button fill="outline" color="light" [routerLink]="['../../../../../depot-handover', getParcelsOfDepot(stop.id), tourNumber]" mode="ios">
                       Abholung
                     </ion-button>
                   </div>

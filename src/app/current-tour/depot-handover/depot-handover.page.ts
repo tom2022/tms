@@ -14,6 +14,7 @@ export class DepotHandoverPage implements OnInit {
     checkedParcels: string[] = [];
     submitButtonDisabled = false;
     loadedTour: Tour;
+    tourNumber: number;
 
   constructor(
       private navCtrl: NavController,
@@ -22,11 +23,12 @@ export class DepotHandoverPage implements OnInit {
 
   ngOnInit() {
       this.parcelIDs = this.route.snapshot.paramMap.get('depotParcelIDs');
+      this.tourNumber = +this.route.snapshot.paramMap.get('tourNumber');
       this.checkedParcels = this.getParcels();
   }
 
     ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+        this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
     }
 
   onBack() {

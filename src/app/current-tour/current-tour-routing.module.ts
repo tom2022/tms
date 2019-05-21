@@ -8,7 +8,7 @@ const routes: Routes = [
         component: CurrentTourPage,
         children: [
             {
-                path: 'current-tour-overview',
+                path: 'current-tour-overview/:tourNumber',
                 children: [
                     {
                         path: '',
@@ -19,16 +19,16 @@ const routes: Routes = [
         ]
     },
     {
-        path: 'receiver-handover/:parcelID',
+        path: 'receiver-handover/:parcelID/:tourNumber',
         loadChildren: './receiver-handover/receiver-handover.module#ReceiverHandoverPageModule'
     },
     {
-        path: 'depot-handover/:depotParcelIDs',
+        path: 'depot-handover/:depotParcelIDs/:tourNumber',
         loadChildren: './depot-handover/depot-handover.module#DepotHandoverPageModule'
     },
     {
         path: '',
-        redirectTo: '/current-tour/tabs/tour-overview',
+        redirectTo: '/current-tour/tabs/tour-overview/',
         pathMatch: 'full'
     }
 

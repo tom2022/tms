@@ -9,6 +9,6 @@ export class Tour {
         public price: number,
         public tourStop: TourStop[],
         public parcelData: Parcel[],
-        public tourStartTime?: object) {
+        public tourStartTime?: string) {
     }
 }

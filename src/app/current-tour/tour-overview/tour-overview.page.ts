@@ -3,6 +3,8 @@ import {Tour} from "../../tour.model";
 import {TourDataService} from "../../tour-data.service";
 import {Parcel} from "../../parcel.model";
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
+import {ActivatedRoute} from "@angular/router";
+import {NavController} from "@ionic/angular";
 
 
 @Component({
@@ -12,13 +14,20 @@ import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
 })
 export class TourOverviewPage implements OnInit {
     loadedTour: Tour;
+    tourNumber: number;
 
-  constructor(private toursService: TourDataService, private iab: InAppBrowser) { }
+  constructor(
+      private toursService: TourDataService,
+      private iab: InAppBrowser,
+      private route: ActivatedRoute,
+      ) { }
+
   ngOnInit() {
+      this.tourNumber = +this.route.snapshot.paramMap.get('tourNumber');
   }
 
   ionViewWillEnter() {
-      this.toursService.tours.subscribe(tours => this.loadedTour = tours[0]);
+      this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
   }
 
     getMapViewLink() {

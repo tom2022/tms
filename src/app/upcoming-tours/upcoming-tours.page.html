@@ -15,11 +15,41 @@
           <ion-card color="light">
             <ion-card-header>
               <ion-card-title>
-                Tour {{i+1}}
+                Tour {{i+1}} {{tour.tourStop[0].city}}
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <ion-button fill="outline" mode="ios">
+              <b>{{getTourStartDay(tour.tourStartTime)}}</b>
+              <br>
+              {{tour.numberOfStops}} Stopps
+              <br>
+              {{tour.price/100}} €
+              <br>
+              <br>
+              <b>1. Stopp: {{getTourStartTime(tour.tourStartTime)}}</b>
+              <br>
+              {{tour.tourStop[0].organization}}
+              <br>
+              {{tour.tourStop[0].streetName}}
+              {{tour.tourStop[0].streetNumber}}
+              <br>
+              {{tour.tourStop[0].zip}}
+              {{tour.tourStop[0].city}}
+              <br>
+              <br>
+              <b>Letzter Stopp:</b>
+              <br>
+              {{tour.tourStop[tour.tourStop.length-1].firstName}}
+              {{tour.tourStop[tour.tourStop.length-1].lastName}}
+              <br>
+              {{tour.tourStop[tour.tourStop.length-1].streetName}}
+              {{tour.tourStop[tour.tourStop.length-1].streetNumber}}
+              <br>
+              {{tour.tourStop[tour.tourStop.length-1].zip}}
+              {{tour.tourStop[tour.tourStop.length-1].city}}
+              <br>
+              <br>
+              <ion-button fill="outline" mode="ios" [routerLink]="['../current-tour/tabs/current-tour-overview', i]">
                 Tour ausfahren
               </ion-button>
             </ion-card-content>
