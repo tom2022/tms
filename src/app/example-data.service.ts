@@ -115,7 +115,7 @@ export class ExampleDataService {
         parcelData: [
             {
                 receiverID: '123',
-                sscc: '43878478347',
+                sscc: 'urn:epc:id:sscc:4387847.0000000333',
                 startTime: '2019-06-11T13:45Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:00Z[UTC]',
                 depotID: '900',
@@ -124,7 +124,7 @@ export class ExampleDataService {
             },
             {
                 receiverID: '234',
-                sscc: '43878478234',
+                sscc: 'urn:epc:id:sscc:4387847.0000000444',
                 startTime: '2019-06-11T13:45Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 depotID: '900',
@@ -133,7 +133,7 @@ export class ExampleDataService {
             },
             {
                 receiverID: '234',
-                sscc: '43333478234',
+                sscc: 'urn:epc:id:sscc:4333347.0000000555',
                 startTime: '2019-06-11T13:45Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 depotID: '900',
@@ -142,7 +142,7 @@ export class ExampleDataService {
             },
             {
                 receiverID: '345',
-                sscc: '10033478235',
+                sscc: 'urn:epc:id:sscc:1003347.0000000666',
                 startTime: '2019-06-11T14:00Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:10Z[UTC]',
                 depotID: '900',
@@ -151,7 +151,7 @@ export class ExampleDataService {
             },
             {
                 receiverID: '456',
-                sscc: '31013478235',
+                sscc: 'urn:epc:id:sscc:3101347.0000000777',
                 startTime: '2019-06-11T14:00Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:13Z[UTC]',
                 depotID: '900',
@@ -160,7 +160,7 @@ export class ExampleDataService {
             },
             {
                 receiverID: '567',
-                sscc: '44213478162',
+                sscc: 'urn:epc:id:sscc:4421347.0000000888',
                 startTime: '2019-06-11T14:00Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 depotID: '901',
@@ -169,7 +169,7 @@ export class ExampleDataService {
             },
             {
                 receiverID: '567',
-                sscc: '74213438163',
+                sscc: 'urn:epc:id:sscc:7421343.0000000999',
                 startTime: '2019-06-11T14:00Z[UTC]',
                 plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 depotID: '901',
