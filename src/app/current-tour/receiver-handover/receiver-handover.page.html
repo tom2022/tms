@@ -23,7 +23,7 @@
                 </ion-card-header>
                 <ion-card-content>
                     <ion-item *ngFor="let parcel of getParcels()">
-                        <ion-label>{{parcel}}</ion-label>
+                        <ion-label>{{getParcelWithoutPrefix(parcel)}}</ion-label>
                         <ion-checkbox slot="end" checked="true" mode="ios" (ionChange)="updateParcel($event, parcel)"></ion-checkbox>
                     </ion-item>
                     <br>

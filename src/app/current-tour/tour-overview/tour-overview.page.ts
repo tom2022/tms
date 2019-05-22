@@ -61,6 +61,10 @@ export class TourOverviewPage implements OnInit {
       return parcels;
     }
 
+    getParcelWithoutPrefix(parcel: string){
+        return parcel.split("sscc:")[1];
+    }
+
     getDepotParcelData(depotID){
       const parcels: Parcel[] = [];
       for(let parcel of this.loadedTour.parcelData) {

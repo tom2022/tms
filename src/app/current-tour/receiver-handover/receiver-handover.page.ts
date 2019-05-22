@@ -82,6 +82,10 @@ export class ReceiverHandoverPage implements OnInit {
       return this.parcelIDs.split("%");
   }
 
+  getParcelWithoutPrefix(parcel: string){
+      return parcel.split("sscc:")[1];
+  }
+
   updateParcel(e:any ,parcel) {
     if(e.target.checked){
         this.checkedParcels.push(parcel);

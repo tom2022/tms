@@ -43,7 +43,7 @@
                         Anzahl der Pakete:{{getParcelData(stop.id).length}}
                       </p>
                       <p *ngFor="let parcel of getParcelData(stop.id)">
-                        <ion-text>Paket-ID: {{parcel.sscc}} </ion-text>
+                        <ion-text>Paket-ID: {{getParcelWithoutPrefix(parcel.sscc)}} </ion-text>
                       </p>
                       <br>
                     <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">

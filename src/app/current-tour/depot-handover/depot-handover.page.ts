@@ -80,6 +80,10 @@ export class DepotHandoverPage implements OnInit {
         return this.parcelIDs.split("%");
     }
 
+    getParcelWithoutPrefix(parcel){
+        return parcel.split("sscc:")[1];
+    }
+
     updateParcel(e:any, parcel) {
       console.log(this.loadedTour.tourID);
         if(e.target.checked){
