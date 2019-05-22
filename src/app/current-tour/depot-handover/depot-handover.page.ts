@@ -56,17 +56,19 @@ export class DepotHandoverPage implements OnInit {
             if(this.getParcels()[0] === parcel.sscc){
                 for(let stop of this.loadedTour.tourStop){
                     if(parcel.depotID === stop.id && stop.stopType === 'Depot'){
-                        if(info === 'name'){
-                            return stop.firstName + ' ' + stop.lastName
-                        }
-                        if(info === 'street'){
-                            return stop.streetName + ' ' + stop.streetNumber
-                        }
-                        if(info === 'city'){
-                            return stop.zip + ' ' + stop.city
-                        }
-                        if(info === 'id'){
-                            return stop.id
+                        switch(info){
+                            case 'name': {
+                                return stop.organization
+                            }
+                            case 'street': {
+                                return stop.streetName + ' ' + stop.streetNumber
+                            }
+                            case 'city': {
+                                return stop.zip + ' ' + stop.city
+                            }
+                            case 'id': {
+                                return stop.id
+                            }
                         }
                     }
                 }

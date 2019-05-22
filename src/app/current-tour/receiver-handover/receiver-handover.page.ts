@@ -54,17 +54,19 @@ export class ReceiverHandoverPage implements OnInit {
           if(this.getParcels()[0] === parcel.sscc){
               for(let stop of this.loadedTour.tourStop){
                   if(parcel.receiverID === stop.id && stop.stopType === 'Receiver'){
-                      if(info === 'name'){
-                          return stop.firstName + ' ' + stop.lastName
-                      }
-                      if(info === 'street'){
-                          return stop.streetName + ' ' + stop.streetNumber
-                      }
-                      if(info === 'city'){
-                          return stop.zip + ' ' + stop.city
-                      }
-                      if(info === 'id'){
-                          return stop.id
+                      switch(info){
+                          case 'name': {
+                              return stop.firstName + ' ' + stop.lastName
+                          }
+                          case 'street': {
+                              return stop.streetName + ' ' + stop.streetNumber
+                          }
+                          case 'city': {
+                              return stop.zip + ' ' + stop.city
+                          }
+                          case 'id': {
+                              return stop.id
+                          }
                       }
                   }
               }

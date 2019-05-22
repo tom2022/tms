@@ -26,12 +26,15 @@
               <ion-card *ngIf="stop.stopCompleted === false"
                         [color]="stop.stopType==='Depot' ? 'primary' : 'light'">
                 <ion-card-header>
-                  <ion-card-title>
-                    <ion-icon name="repeat" *ngIf="stop.stopType==='Depot'"></ion-icon>
-                    <ion-icon name="pin" *ngIf="stop.stopType==='Receiver'"></ion-icon>
-                    {{ stop.firstName}} {{stop.lastName}},
-                    {{stop.streetName}} {{stop.streetNumber}},
-                    {{stop.zip}} {{stop.city}}
+                  <ion-card-title *ngIf="stop.stopType==='Depot'">
+                      <ion-icon name="repeat"></ion-icon>
+                      {{ stop.organization}},
+                      {{stop.zip}} {{stop.city}}
+                  </ion-card-title>
+                  <ion-card-title *ngIf="stop.stopType==='Receiver'">
+                      <ion-icon name="pin"></ion-icon>
+                      {{ stop.firstName}} {{stop.lastName}},
+                      {{stop.zip}} {{stop.city}}
                   </ion-card-title>
                 </ion-card-header>
                 <ion-card-content>

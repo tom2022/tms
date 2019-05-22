@@ -72,14 +72,15 @@ export class ExampleDataService {
             {
                 stopType: 'Depot',
                 id: '901',
-                lastName: 'Schachmann',
-                firstName: 'Kiosk',
+                lastName: 'Schmidt',
+                firstName: 'Frank',
                 streetName: 'Hans-Sachs-Strasse',
                 streetNumber: '39',
                 zip: '14471',
                 city: 'Potsdam',
                 stopCompleted: false,
                 country: 'DE',
+                organization: 'Bäckerei Schmidt',
                 depotCategory: 'Kiosk'
             },
             {
