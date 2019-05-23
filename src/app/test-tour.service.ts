@@ -5,7 +5,7 @@ import {Injectable} from "@angular/core";
     providedIn: 'root'
 })
 
-export class ExampleDataService {
+export class TestTourService {
 
     private _etour: Tour  = {
         tourID : '3249898432EXAMPLETOUR',

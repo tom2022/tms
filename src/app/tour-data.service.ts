@@ -5,7 +5,7 @@ import {Parcel} from "./parcel.model";
 import {BehaviorSubject} from "rxjs";
 import {Tour} from "./tour.model";
 import {TourStop} from "./tour-stop.model";
-import {ExampleDataService} from "./example-data.service";
+import {TestTourService} from "./test-tour.service";
 
 @Injectable({
     providedIn: 'root'
@@ -13,10 +13,10 @@ import {ExampleDataService} from "./example-data.service";
 
 export class TourDataService {
 
-    constructor(private http: HttpClient, private exampleTourService: ExampleDataService) {
+    constructor(private http: HttpClient, private testTourService: TestTourService) {
     }
 
-    private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.exampleTourService.exampleTour]);
+    private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.testTourService.exampleTour]);
 
     get tours() {
         return this._tours.asObservable();
@@ -52,7 +52,7 @@ export class TourDataService {
             .pipe(
                 map(resData => {
                     let newTours = [];
-                    newTours.push(this.exampleTourService.exampleTour);
+                    newTours.push(this.testTourService.exampleTour);
                     for(let tour of resData["tours"]){
                         const stops = tour["stops"];
                         const parcels = tour["packets"];
