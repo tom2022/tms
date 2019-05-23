@@ -28,7 +28,7 @@ const routes: Routes = [
     },
     {
         path: '',
-        redirectTo: '/current-tour/tabs/tour-overview/',
+        redirectTo: '/current-tour/tabs/tour-overview/0',
         pathMatch: 'full'
     }
 

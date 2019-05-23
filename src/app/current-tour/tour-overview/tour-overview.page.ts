@@ -4,7 +4,6 @@ import {TourDataService} from "../../tour-data.service";
 import {Parcel} from "../../parcel.model";
 import {InAppBrowser} from '@ionic-native/in-app-browser/ngx'
 import {ActivatedRoute} from "@angular/router";
-import {NavController} from "@ionic/angular";
 
 
 @Component({

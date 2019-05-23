@@ -18,12 +18,6 @@ export class TourDataService {
     }
 
     private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.exampleTourService.exampleTour]);
-    //private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([]);
-    /*send tour id To Sphinx
-    return this.http.post('someURL', tourID)
-    .pipe(tap( resDate => {
-        console.log(resData);
-    }));*/
 
     get tours() {
         return this._tours.asObservable();

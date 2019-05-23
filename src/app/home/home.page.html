@@ -3,7 +3,6 @@
     <ion-title>
       myTMS
     </ion-title>
-    <!-- TODO png-->
       <ion-button slot="end" fill="clear" (click)="onLoadData()">
           <ion-icon name="refresh"></ion-icon>
       </ion-button>
@@ -21,17 +20,11 @@
                 <ion-icon name="alarm"></ion-icon>
                 Aktuelle Tour
               </ion-card-title>
-              <!-- TODO Preview -->
             </ion-card-header>
             <ion-card-content>
               <p>Startzeit: {{getStopDay(loadedTours[0].tourStartTime)}} {{getStopTime(loadedTours[0].tourStartTime)}} </p>
               <p>{{loadedTours[0].numberOfStops}} Stopps, {{loadedTours[0].parcelData.length}} Pakete</p>
               <p>{{loadedTours[0].tourStop[0].zip}} {{loadedTours[0].tourStop[0].city}}</p>
-              <!--TODO Earliest Handover: 4 pm
-              Latest Handover: 6 pm </p>-->
-              <!--Anzahl Pakete -->
-              <!-- PLZ Gebiet-->
-              <!-- Vorgeschlagener Start/ Timer -->
             </ion-card-content>
           </ion-card>
           <ion-card color="light" routerLink="/upcoming-tours">
@@ -66,6 +59,5 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <!-- TODO disabled-->
   </div>
 </ion-content>
