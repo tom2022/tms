@@ -10,11 +10,11 @@ import {Tour} from "../../tour.model";
   styleUrls: ['./receiver-handover.page.scss'],
 })
 export class ReceiverHandoverPage implements OnInit {
-    parcelIDs: string;
-    checkedParcels: string[] = [];
-    submitButtonDisabled = false;
-    loadedTour: Tour;
-    tourNumber: number;
+  parcelIDs: string;
+  checkedParcels: string[] = [];
+  submitButtonDisabled = false;
+  loadedTour: Tour;
+  tourNumber: number;
 
   constructor(
       private route: ActivatedRoute,
@@ -29,8 +29,11 @@ export class ReceiverHandoverPage implements OnInit {
   }
 
   ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
-        console.log(this.loadedTour);
+      this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
+  }
+
+  onBack() {
+      this.navCtrl.back();
   }
 
   getReceiverName() {
@@ -74,10 +77,6 @@ export class ReceiverHandoverPage implements OnInit {
       }
   }
 
-  onBack() {
-      this.navCtrl.back();
-  }
-
   getParcels(){
       return this.parcelIDs.split("%");
   }
@@ -86,27 +85,26 @@ export class ReceiverHandoverPage implements OnInit {
       return parcel.split("sscc:")[1];
   }
 
-  updateParcel(e:any ,parcel) {
-    if(e.target.checked){
-        this.checkedParcels.push(parcel);
-        this.submitButtonDisabled = false;
-    }
-    else {
-        this.checkedParcels = this.checkedParcels.filter(s => s !== parcel);
-        if(this.checkedParcels.length == 0){
-            this.submitButtonDisabled = true;
-        }
-    }
-      console.log(this.checkedParcels);
+  updateParcel(e: any, parcel) {
+      if(e.target.checked){
+          this.checkedParcels.push(parcel);
+          this.submitButtonDisabled = false;
+      }
+      else {
+          this.checkedParcels = this.checkedParcels.filter(s => s !== parcel);
+          if(this.checkedParcels.length == 0){
+              this.submitButtonDisabled = true;
+          }
+      }
   }
 
   onConfirmParcelHandover() {
       if(this.checkedParcels.length === this.getParcels().length){
           this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getReceiverId()).subscribe();
       }
-        //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
       for(let checkedParcel of this.checkedParcels){
           this.toursService.updateDeliveredParcels(this.loadedTour.tourID, checkedParcel).subscribe();
+          //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
           if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR'){
               const today = new Date();
               const d = today.toISOString();

@@ -9,9 +9,7 @@ import {NavController} from "@ionic/angular";
 })
 export class CurrentTourPage implements OnInit {
 
-  constructor(private router: Router,
-              private navCtrl: NavController,
-              ) { }
+  constructor(private router: Router, private navCtrl: NavController,) { }
 
   ngOnInit() {
   }

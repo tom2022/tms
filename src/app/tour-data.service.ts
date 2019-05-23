@@ -14,7 +14,6 @@ import {ExampleDataService} from "./example-data.service";
 export class TourDataService {
 
     constructor(private http: HttpClient, private exampleTourService: ExampleDataService) {
-
     }
 
     private _tours: BehaviorSubject<Tour[]> = new BehaviorSubject<Tour[]>([this.exampleTourService.exampleTour]);
@@ -24,7 +23,6 @@ export class TourDataService {
     }
 
     sendParcelDepotHandoverConfirmation(parcelID, date) {
-        console.log(parcelID, date);
         let headers = new HttpHeaders();
         headers.append('Content-Type','application/json');
         return this.http.post('https://bpt-lab.org/smile/caz/tms/pick-up-reported', {
@@ -36,7 +34,6 @@ export class TourDataService {
     }
 
     sendParcelReceiverHandoverConfirmation(parcelID, date) {
-        console.log(parcelID, date);
         let headers = new HttpHeaders({
             'Content-Type': 'application/json'
         });

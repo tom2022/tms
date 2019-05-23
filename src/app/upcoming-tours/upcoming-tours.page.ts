@@ -12,7 +12,8 @@ import {TourDataService} from "../tour-data.service";
 export class UpcomingToursPage implements OnInit {
   loadedTours: Tour[];
 
-  constructor(private router: Router,
+  constructor(
+      private router: Router,
               private navCtrl: NavController,
               private toursService: TourDataService
               ) { }
@@ -20,31 +21,30 @@ export class UpcomingToursPage implements OnInit {
   ngOnInit() {
   }
 
-    ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTours = tours);
-    }
+  ionViewWillEnter() {
+      this.toursService.tours.subscribe(tours => this.loadedTours = tours);
+  }
 
   onBackHome() {
-    this.navCtrl.navigateBack('/home');
+      this.navCtrl.navigateBack('/home');
   }
 
   getTours(){
-    return this.loadedTours;
+      return this.loadedTours;
   }
 
-    getStopDay(date: string){
-        if(date !== undefined){
-            const day = (date.split('T')[0]).split('-');
-            return day[2] + "." + day[1] + "." + day[0]
-        }
-    }
+  getStopDay(date: string){
+      if(date !== undefined){
+          const day = (date.split('T')[0]).split('-');
+          return day[2] + "." + day[1] + "." + day[0]
+      }
+  }
 
   getStopTime(date: string){
-    if(date !== undefined){
-        const d = date.split('T');
-        return d[1].split('Z')[0] + ' Uhr';
-    }
+      if(date !== undefined){
+          const d = date.split('T');
+          return d[1].split('Z')[0] + ' Uhr';
+      }
   }
-
 
 }

@@ -12,8 +12,8 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./tour-overview.page.scss'],
 })
 export class TourOverviewPage implements OnInit {
-    loadedTour: Tour;
-    tourNumber: number;
+  loadedTour: Tour;
+  tourNumber: number;
 
   constructor(
       private toursService: TourDataService,
@@ -29,7 +29,7 @@ export class TourOverviewPage implements OnInit {
       this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
   }
 
-    getMapViewLink() {
+  getMapViewLink() {
       let link = "https://www.google.com/maps/dir/";
       for(let stop of this.loadedTour.tourStop){
           link = link + stop.streetName + "+" + stop.streetNumber + "+" + stop.zip + "+" + stop.city + "/";
@@ -37,7 +37,7 @@ export class TourOverviewPage implements OnInit {
       this.iab.create(link, '_system');
     }
 
-    getNumberOfStopsLeft() {
+  getNumberOfStopsLeft() {
       let counter = 0;
       for(let stop of this.loadedTour.tourStop) {
           if(stop.stopCompleted === false){
@@ -46,9 +46,9 @@ export class TourOverviewPage implements OnInit {
       }
       counter = this.loadedTour.numberOfStops - counter;
       return counter;
-    }
+  }
 
-    getParcelData(receiverID){
+  getParcelData(receiverID){
       const parcels: Parcel[] = [];
       for(let parcel of this.loadedTour.parcelData) {
           if(parcel.receiverID === receiverID){
@@ -58,13 +58,13 @@ export class TourOverviewPage implements OnInit {
           }
       }
       return parcels;
-    }
+  }
 
-    getParcelWithoutPrefix(parcel: string){
-        return parcel.split("sscc:")[1];
-    }
+  getParcelWithoutPrefix(parcel: string){
+      return parcel.split("sscc:")[1];
+  }
 
-    getDepotParcelData(depotID){
+  getDepotParcelData(depotID){
       const parcels: Parcel[] = [];
       for(let parcel of this.loadedTour.parcelData) {
           if(parcel.depotID === depotID) {
@@ -72,9 +72,9 @@ export class TourOverviewPage implements OnInit {
           }
       }
       return parcels;
-    }
+  }
 
-    areParcelsLoaded(receiverID){
+  areParcelsLoaded(receiverID){
       for(let parcel of this.getParcelData(receiverID)){
           for(let stop of this.loadedTour.tourStop){
               if(parcel.depotID === stop.id){
@@ -86,23 +86,23 @@ export class TourOverviewPage implements OnInit {
 
       }
       return false;
-    }
+  }
 
-    getStopTime(date: string){
-        if(date !== undefined){
-            const d = date.split('T');
-            return d[1].split('Z')[0] + ' Uhr';
-        }
-    }
+  getStopTime(date: string){
+      if(date !== undefined){
+          const d = date.split('T');
+          return d[1].split('Z')[0] + ' Uhr';
+      }
+  }
 
-    getNavigationLink(streetName, streetNumber, zip, city){
+  getNavigationLink(streetName, streetNumber, zip, city){
       const link = "https://www.google.com/maps/dir/?api=1&destination="
           + streetName + "+" + streetNumber + "+" +
           zip + "+" + city + "&dir_action=navigate";
-        this.iab.create(link, '_system');
-    }
+      this.iab.create(link, '_system');
+  }
 
-    getUndeliveredParcelsOfStop(receiverID){
+  getUndeliveredParcelsOfStop(receiverID){
       let parcels: Parcel[];
       parcels = this.getParcelData(receiverID);
       let parcelString: string = '';
@@ -117,9 +117,9 @@ export class TourOverviewPage implements OnInit {
           }
       }
       return parcelString;
-    }
+  }
 
-    getParcelsOfDepot(depotID){
+  getParcelsOfDepot(depotID){
       let parcels: Parcel[];
       parcels = this.getDepotParcelData(depotID);
       let parcelString: string = '';
@@ -134,5 +134,5 @@ export class TourOverviewPage implements OnInit {
           }
       }
       return parcelString;
-    }
+  }
 }

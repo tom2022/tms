@@ -10,11 +10,11 @@ import {TourDataService} from "../../tour-data.service";
   styleUrls: ['./depot-handover.page.scss'],
 })
 export class DepotHandoverPage implements OnInit {
-    parcelIDs: string;
-    checkedParcels: string[] = [];
-    submitButtonDisabled = false;
-    loadedTour: Tour;
-    tourNumber: number;
+  parcelIDs: string;
+  checkedParcels: string[] = [];
+  submitButtonDisabled = false;
+  loadedTour: Tour;
+  tourNumber: number;
 
   constructor(
       private navCtrl: NavController,
@@ -27,81 +27,80 @@ export class DepotHandoverPage implements OnInit {
       this.checkedParcels = this.getParcels();
   }
 
-    ionViewWillEnter() {
-        this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
-    }
-
-  onBack() {
-    this.navCtrl.back();
+  ionViewWillEnter() {
+      this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
   }
 
-    getDepotName() {
-        return this.getDepotInformation('name');
-    }
+  onBack() {
+      this.navCtrl.back();
+  }
 
-    getDepotStreet() {
-        return this.getDepotInformation('street');
-    }
+  getDepotName() {
+      return this.getDepotInformation('name');
+  }
 
-    getDepotCity() {
-        return this.getDepotInformation('city');
-    }
+  getDepotStreet() {
+      return this.getDepotInformation('street');
+  }
 
-    getDepotId() {
+  getDepotCity() {
+      return this.getDepotInformation('city');
+  }
+
+  getDepotId() {
       return this.getDepotInformation('id');
-    }
+  }
 
-    getDepotInformation(info) {
-        for(let parcel of this.loadedTour.parcelData){
-            if(this.getParcels()[0] === parcel.sscc){
-                for(let stop of this.loadedTour.tourStop){
-                    if(parcel.depotID === stop.id && stop.stopType === 'Depot'){
-                        switch(info){
-                            case 'name': {
-                                return stop.organization
-                            }
-                            case 'street': {
-                                return stop.streetName + ' ' + stop.streetNumber
-                            }
-                            case 'city': {
-                                return stop.zip + ' ' + stop.city
-                            }
-                            case 'id': {
-                                return stop.id
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+  getDepotInformation(info) {
+      for(let parcel of this.loadedTour.parcelData){
+          if(this.getParcels()[0] === parcel.sscc){
+              for(let stop of this.loadedTour.tourStop){
+                  if(parcel.depotID === stop.id && stop.stopType === 'Depot'){
+                      switch(info){
+                          case 'name': {
+                              return stop.organization
+                          }
+                          case 'street': {
+                              return stop.streetName + ' ' + stop.streetNumber
+                          }
+                          case 'city': {
+                              return stop.zip + ' ' + stop.city
+                          }
+                          case 'id': {
+                              return stop.id
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
 
-    getParcels(){
-        return this.parcelIDs.split("%");
-    }
+  getParcels(){
+      return this.parcelIDs.split("%");
+  }
 
-    getParcelWithoutPrefix(parcel){
-        return parcel.split("sscc:")[1];
-    }
+  getParcelWithoutPrefix(parcel){
+      return parcel.split("sscc:")[1];
+  }
 
-    updateParcel(e:any, parcel) {
-      console.log(this.loadedTour.tourID);
-        if(e.target.checked){
-            this.checkedParcels.push(parcel);
-            this.submitButtonDisabled = false;
-        }
-        else {
-            this.checkedParcels = this.checkedParcels.filter(s => s !== parcel);
-            }
-        if(this.checkedParcels.length !== this.getParcels().length){
-            this.submitButtonDisabled = true;
-            }
-    }
+  updateParcel(e: any, parcel) {
+      if(e.target.checked){
+          this.checkedParcels.push(parcel);
+          this.submitButtonDisabled = false;
+      }
+      else {
+          this.checkedParcels = this.checkedParcels.filter(s => s !== parcel);
+      }
+      if(this.checkedParcels.length !== this.getParcels().length){
+          this.submitButtonDisabled = true;
+      }
+  }
 
-
-    onConfirmParcelHandover() {
+  onConfirmParcelHandover() {
       this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getDepotId()).subscribe();
-      if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR'){ //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
+      //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
+      if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR'){
           for(let parcel of this.loadedTour.parcelData){
               const today = new Date();
               const d = today.toISOString();
@@ -109,5 +108,5 @@ export class DepotHandoverPage implements OnInit {
           }
       }
       this.onBack();
-    }
+  }
 }
