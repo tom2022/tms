@@ -32,13 +32,14 @@ export class UpcomingToursPage implements OnInit {
     return this.loadedTours;
   }
 
-  getTourStartDay(date: string){
-    if(date !== undefined){
-        return date.split('T')[0];
+    getStopDay(date: string){
+        if(date !== undefined){
+            const day = (date.split('T')[0]).split('-');
+            return day[2] + "." + day[1] + "." + day[0]
+        }
     }
-  }
 
-  getTourStartTime(date: string){
+  getStopTime(date: string){
     if(date !== undefined){
         const d = date.split('T');
         return d[1].split('Z')[0] + ' Uhr';

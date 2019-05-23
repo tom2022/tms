@@ -19,14 +19,14 @@
               </ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              <b>{{getTourStartDay(tour.tourStartTime)}}</b>
+              <b>{{getStopDay(tour.tourStartTime)}}</b>
               <br>
               {{tour.numberOfStops}} Stopps
               <br>
               {{tour.price/100}} €
               <br>
               <br>
-              <b>1. Stopp: {{getTourStartTime(tour.tourStartTime)}}</b>
+              <b>1. Stopp: {{getStopTime(tour.tourStartTime)}}</b>
               <br>
               {{tour.tourStop[0].organization}}
               <br>
@@ -37,7 +37,7 @@
               {{tour.tourStop[0].city}}
               <br>
               <br>
-              <b>Letzter Stopp:</b>
+              <b>Letzter Stopp: ca. {{getStopTime(tour.tourStop[tour.tourStop.length-1].plannedTimeframeStart)}}</b>
               <br>
               {{tour.tourStop[tour.tourStop.length-1].firstName}}
               {{tour.tourStop[tour.tourStop.length-1].lastName}}

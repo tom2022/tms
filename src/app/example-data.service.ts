@@ -10,8 +10,9 @@ export class ExampleDataService {
     private _etour: Tour  = {
         tourID : '3249898432EXAMPLETOUR',
         numberOfStops: 7,
-        estimatedTime: 50,
-        price: 1153,
+        tourStartTime : '2019-06-11T13:50Z[UTC]',
+        estimatedTime: 26,
+        price: 653,
         tourStop: [
             {
                 stopType: 'Depot',
@@ -23,6 +24,7 @@ export class ExampleDataService {
                 zip: '14471',
                 city: 'Potsdam',
                 stopCompleted: false,
+                plannedTimeframeStart: '2019-06-11T13:50Z[UTC]',
                 country: 'DE',
                 organization: 'Kiosk am Bahnhof',
                 depotCategory: 'Kiosk'
@@ -36,6 +38,9 @@ export class ExampleDataService {
                 streetNumber: '18',
                 zip: '14471',
                 city: 'Potsdam',
+                startTime: '2019-06-11T13:45Z[UTC]',
+                endTime: '2019-06-11T15:45Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:00Z[UTC]',
                 stopCompleted: false,
                 country: 'DE',
                 receiverLevel: 2,
@@ -50,6 +55,9 @@ export class ExampleDataService {
                 streetNumber: '11',
                 zip: '14471',
                 city: 'Potsdam',
+                startTime: '2019-06-11T13:45Z[UTC]',
+                endTime: '2019-06-11T15:45Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 stopCompleted: false,
                 country: 'DE',
                 receiverLevel: 1,
@@ -64,6 +72,9 @@ export class ExampleDataService {
                 streetNumber: '55',
                 zip: '14471',
                 city: 'Potsdam',
+                startTime: '2019-06-11T14:00Z[UTC]',
+                endTime: '2019-06-11T16:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:10Z[UTC]',
                 stopCompleted: false,
                 country: 'DE',
                 receiverLevel: 3,
@@ -92,8 +103,11 @@ export class ExampleDataService {
                 streetNumber: '68',
                 zip: '14471',
                 city: 'Potsdam',
-                country: 'DE',
+                startTime: '2019-06-11T14:00Z[UTC]',
+                endTime: '2019-06-11T16:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:13Z[UTC]',
                 stopCompleted: false,
+                country: 'DE',
                 receiverLevel: 0,
                 receiverRemark: ''
             },
@@ -106,6 +120,9 @@ export class ExampleDataService {
                 streetNumber: '35',
                 zip: '14471',
                 city: 'Potsdam',
+                startTime: '2019-06-11T14:00Z[UTC]',
+                endTime: '2019-06-11T16:00Z[UTC]',
+                plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 stopCompleted: false,
                 country: 'DE',
                 receiverLevel: 0,
@@ -116,8 +133,6 @@ export class ExampleDataService {
             {
                 receiverID: '123',
                 sscc: 'urn:epc:id:sscc:4387847.0000000333',
-                startTime: '2019-06-11T13:45Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:00Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -125,8 +140,6 @@ export class ExampleDataService {
             {
                 receiverID: '234',
                 sscc: 'urn:epc:id:sscc:4387847.0000000444',
-                startTime: '2019-06-11T13:45Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -134,8 +147,6 @@ export class ExampleDataService {
             {
                 receiverID: '234',
                 sscc: 'urn:epc:id:sscc:4333347.0000000555',
-                startTime: '2019-06-11T13:45Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:05Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -143,8 +154,6 @@ export class ExampleDataService {
             {
                 receiverID: '345',
                 sscc: 'urn:epc:id:sscc:1003347.0000000666',
-                startTime: '2019-06-11T14:00Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:10Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -152,8 +161,6 @@ export class ExampleDataService {
             {
                 receiverID: '456',
                 sscc: 'urn:epc:id:sscc:3101347.0000000777',
-                startTime: '2019-06-11T14:00Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:13Z[UTC]',
                 depotID: '900',
                 tourID: '3249898432',
                 isDelivered: false
@@ -161,8 +168,6 @@ export class ExampleDataService {
             {
                 receiverID: '567',
                 sscc: 'urn:epc:id:sscc:4421347.0000000888',
-                startTime: '2019-06-11T14:00Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 depotID: '901',
                 tourID: '3249898432',
                 isDelivered: false
@@ -170,14 +175,11 @@ export class ExampleDataService {
             {
                 receiverID: '567',
                 sscc: 'urn:epc:id:sscc:7421343.0000000999',
-                startTime: '2019-06-11T14:00Z[UTC]',
-                plannedTimeframeStart: '2019-06-11T14:16Z[UTC]',
                 depotID: '901',
                 tourID: '3249898432',
                 isDelivered: false
             }
-        ],
-        tourStartTime : '2019-06-11T13:45Z[UTC]'
+        ]
     };
 
     constructor() {

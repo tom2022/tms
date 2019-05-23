@@ -89,6 +89,13 @@ export class TourOverviewPage implements OnInit {
       return false;
     }
 
+    getStopTime(date: string){
+        if(date !== undefined){
+            const d = date.split('T');
+            return d[1].split('Z')[0] + ' Uhr';
+        }
+    }
+
     getNavigationLink(streetName, streetNumber, zip, city){
       const link = "https://www.google.com/maps/dir/?api=1&destination="
           + streetName + "+" + streetNumber + "+" +

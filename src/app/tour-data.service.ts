@@ -79,6 +79,9 @@ export class TourDataService {
                                 stop.zip,
                                 stop.city,
                                 false,
+                                stop.startTime,
+                                stop.endTime,
+                                stop.plannedTimeframeStart,
                                 stop.country,
                                 stop.organization,
                                 stop.receiverLevel,
@@ -90,8 +93,6 @@ export class TourDataService {
                             newParcels.push(new Parcel(
                                 parcel.receiverID,
                                 parcel.sscc,
-                                parcel.startTime,
-                                parcel.plannedTimeframeStart,
                                 parcel.depotID,
                                 parcel.tourID,
                                 false
@@ -100,11 +101,11 @@ export class TourDataService {
                         newTours.push(new Tour(
                             metaData.tourID,
                             metaData.numberOfStops,
+                            metaData.tourStartTime,
                             metaData.estimatedTime,
                             metaData.price,
                             newStops,
                             newParcels,
-                            metaData.tourStartTime
                         ))
                     }
                     return newTours;
@@ -123,7 +124,7 @@ export class TourDataService {
             let updatedParcels = [];
             for(let p of oldTour.parcelData){
                 if(p.sscc === deliveredParcel){
-                    updatedParcels.push(new Parcel(p.receiverID, p.sscc, p.startTime, p.plannedTimeframeStart, p.depotID, p.tourID, true));
+                    updatedParcels.push(new Parcel(p.receiverID, p.sscc, p.depotID, p.tourID, true));
                 }
                 else{
                     updatedParcels.push(p);
@@ -132,6 +133,7 @@ export class TourDataService {
             updatedTours[tourIndex] = new Tour(
                 oldTour.tourID,
                 oldTour.numberOfStops,
+                oldTour.tourStartTime,
                 oldTour.estimatedTime,
                 oldTour.price,
                 oldTour.tourStop,
@@ -149,7 +151,7 @@ export class TourDataService {
             let updatedStops = [];
             for(let s of oldTour.tourStop){
                 if(s.id === stopID){
-                    updatedStops.push(new TourStop(s.stopType, s.id, s.lastName, s.firstName, s.streetName, s.streetNumber, s.zip, s.city, true, s.country, s.organization, s.receiverLevel, s.receiverRemark, s.depotCategory));
+                    updatedStops.push(new TourStop(s.stopType, s.id, s.lastName, s.firstName, s.streetName, s.streetNumber, s.zip, s.city, true, s.startTime, s.endTime, s.plannedTimeframeStart, s.country, s.organization, s.receiverLevel, s.receiverRemark, s.depotCategory));
                 }
                 else{
                     updatedStops.push(s);
@@ -158,6 +160,7 @@ export class TourDataService {
             updatedTours[tourIndex] = new Tour(
                 oldTour.tourID,
                 oldTour.numberOfStops,
+                oldTour.tourStartTime,
                 oldTour.estimatedTime,
                 oldTour.price,
                 updatedStops,

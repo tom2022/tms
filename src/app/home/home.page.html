@@ -24,7 +24,7 @@
               <!-- TODO Preview -->
             </ion-card-header>
             <ion-card-content>
-              <p>Startzeit: 2019-06-11 13:45 Uhr </p>
+              <p>Startzeit: {{getStopDay(loadedTours[0].tourStartTime)}} {{getStopTime(loadedTours[0].tourStartTime)}} </p>
               <p>{{loadedTours[0].numberOfStops}} Stopps, {{loadedTours[0].parcelData.length}} Pakete</p>
               <p>{{loadedTours[0].tourStop[0].zip}} {{loadedTours[0].tourStop[0].city}}</p>
               <!--TODO Earliest Handover: 4 pm

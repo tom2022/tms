@@ -9,8 +9,9 @@
           <ion-card>
             <ion-card-header>
               <ion-card-title>
+                Start: {{getStopTime(loadedTour.tourStartTime)}}
+                <br>
                 {{getNumberOfStopsLeft()}}/{{loadedTour.tourStop.length}} Stopps absolviert
-                  <!--selbst ausrechnen + success screen-->
                 <br>
                 {{loadedTour.price/100}}€
               </ion-card-title>
@@ -27,7 +28,7 @@
                         [color]="stop.stopType==='Depot' ? 'primary' : 'light'">
                 <ion-card-header>
                   <ion-card-title *ngIf="stop.stopType==='Depot'">
-                      <ion-icon name="repeat"></ion-icon>
+                      <ion-icon name="home"></ion-icon>
                       {{ stop.organization}},
                       {{stop.zip}} {{stop.city}}
                   </ion-card-title>
@@ -39,6 +40,9 @@
                 </ion-card-header>
                 <ion-card-content>
                     <div *ngIf="stop.stopType==='Receiver'">
+                      <p>
+                        Zeitfenster: {{getStopTime(stop.startTime)}} - {{getStopTime(stop.endTime)}}
+                      </p>
                       <p>
                         Anzahl der Pakete:{{getParcelData(stop.id).length}}
                       </p>
@@ -61,9 +65,6 @@
                       Abholung
                     </ion-button>
                   </div>
-                  <!--<p *ngIf="stop.stopType==='Receiver'"> Parcel ID: {{getParcelData(stop.id)}}</p>
-                  <p *ngIf="address[4]==='false'"> Time frame: 4 pm - 6 pm</p>-->
-                  <!-- TODO Timer/ TimeSlots -->
                 </ion-card-content>
               </ion-card>
           </div>
@@ -75,7 +76,7 @@
                 <ion-icon name="checkmark-circle-outline" size="large"></ion-icon>
                 <br>
                 <br>
-                <b>Juhuu!!!</b>
+                <b>Glückwunsch!!!</b>
                 <br>
                 <br>
                 Du hast die Tour erfolgreich abgeschlossen!

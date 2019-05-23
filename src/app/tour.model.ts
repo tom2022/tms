@@ -5,10 +5,10 @@ export class Tour {
     constructor(
         public tourID: string,
         public numberOfStops: number,
+        public tourStartTime: string,
         public estimatedTime: number,
         public price: number,
         public tourStop: TourStop[],
-        public parcelData: Parcel[],
-        public tourStartTime?: string) {
+        public parcelData: Parcel[]) {
     }
 }
