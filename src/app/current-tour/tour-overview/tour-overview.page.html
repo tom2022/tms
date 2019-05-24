@@ -30,11 +30,13 @@
                   <ion-card-title *ngIf="stop.stopType==='Depot'">
                       <ion-icon name="home"></ion-icon>
                       {{ stop.organization}},
+                      {{stop.streetName}} {{stop.streetNumber}},
                       {{stop.zip}} {{stop.city}}
                   </ion-card-title>
                   <ion-card-title *ngIf="stop.stopType==='Receiver'">
                       <ion-icon name="pin"></ion-icon>
                       {{ stop.firstName}} {{stop.lastName}},
+                      {{stop.streetName}} {{stop.streetNumber}},
                       {{stop.zip}} {{stop.city}}
                   </ion-card-title>
                 </ion-card-header>
