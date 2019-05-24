@@ -134,49 +134,42 @@ export class TestTourService {
                 receiverID: '123',
                 sscc: 'urn:epc:id:sscc:4387847.0000000333',
                 depotID: '900',
-                tourID: '3249898432',
                 isDelivered: false
             },
             {
                 receiverID: '234',
                 sscc: 'urn:epc:id:sscc:4387847.0000000444',
                 depotID: '900',
-                tourID: '3249898432',
                 isDelivered: false
             },
             {
                 receiverID: '234',
                 sscc: 'urn:epc:id:sscc:4333347.0000000555',
                 depotID: '900',
-                tourID: '3249898432',
                 isDelivered: false
             },
             {
                 receiverID: '345',
                 sscc: 'urn:epc:id:sscc:1003347.0000000666',
                 depotID: '900',
-                tourID: '3249898432',
                 isDelivered: false
             },
             {
                 receiverID: '456',
                 sscc: 'urn:epc:id:sscc:3101347.0000000777',
                 depotID: '900',
-                tourID: '3249898432',
                 isDelivered: false
             },
             {
                 receiverID: '567',
                 sscc: 'urn:epc:id:sscc:4421347.0000000888',
                 depotID: '901',
-                tourID: '3249898432',
                 isDelivered: false
             },
             {
                 receiverID: '567',
                 sscc: 'urn:epc:id:sscc:7421343.0000000999',
                 depotID: '901',
-                tourID: '3249898432',
                 isDelivered: false
             }
         ]

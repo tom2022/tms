@@ -89,7 +89,7 @@ export class TourOverviewPage implements OnInit {
   }
 
   getStopTime(date: string){
-      if(date !== undefined){
+      if(date !== undefined && date !== null){
           const d = date.split('T');
           return d[1].split('Z')[0] + ' Uhr';
       }

@@ -25,7 +25,6 @@ export class ReceiverHandoverPage implements OnInit {
       this.parcelIDs = this.route.snapshot.paramMap.get('parcelID');
       this.tourNumber = +this.route.snapshot.paramMap.get('tourNumber');
       this.checkedParcels = this.getParcels();
-      console.log(this.checkedParcels);
   }
 
   ionViewWillEnter() {

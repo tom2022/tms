@@ -34,16 +34,14 @@ export class TourDataService {
     }
 
     sendParcelReceiverHandoverConfirmation(parcelID, date) {
-        let headers = new HttpHeaders({
-            'Content-Type': 'application/json'
-        });
-        let options = { headers: headers };
+        let headers = new HttpHeaders();
+        headers.append('Content-Type','application/json');
         return this.http.post('https://bpt-lab.org/smile/caz/tms/delivery-reported', {
-            "sscc": parcelID,
-            "receiveDate": date
-        }, options).subscribe((response) => {
+            sscc: parcelID,
+            receiveDate: date
+        }, { headers: headers }).subscribe( (response) => {
             console.log(response);
-        });
+        })
     }
 
     fetchTours() {
@@ -85,7 +83,6 @@ export class TourDataService {
                                 parcel.receiverID,
                                 parcel.sscc,
                                 parcel.depotID,
-                                parcel.tourID,
                                 false
                             ))
                         }
@@ -115,7 +112,7 @@ export class TourDataService {
             let updatedParcels = [];
             for(let p of oldTour.parcelData){
                 if(p.sscc === deliveredParcel){
-                    updatedParcels.push(new Parcel(p.receiverID, p.sscc, p.depotID, p.tourID, true));
+                    updatedParcels.push(new Parcel(p.receiverID, p.sscc, p.depotID,true));
                 }
                 else{
                     updatedParcels.push(p);
