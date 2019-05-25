@@ -1,0 +1,7 @@
+{
+  "appId": "com.myTMS",
+  "appName": "myTMS",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

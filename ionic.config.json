@@ -1,7 +1,8 @@
 {
   "name": "myTMS",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }
