@@ -34,16 +34,17 @@ export class UpcomingToursPage implements OnInit {
   }
 
   getStopDay(date: string){
-      if(date !== undefined && date !== null){
+      if (date !== undefined && date !== null) {
           const day = (date.split('T')[0]).split('-');
-          return day[2] + "." + day[1] + "." + day[0]
+          return day[2] + '.' + day[1] + '.' + day[0];
       }
   }
 
   getStopTime(date: string){
-      if(date !== undefined && date !== null){
-          const d = date.split('T');
-          return d[1].split('Z')[0] + ' Uhr';
+      if (date !== undefined && date !== null) {
+          let d = date.split('T')[1];
+          d =  d.split('Z')[0];
+          return d.split(':')[0] + ':' + d.split(':')[1] + ' Uhr';
       }
   }
 

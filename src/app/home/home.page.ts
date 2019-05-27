@@ -31,18 +31,16 @@ export class HomePage {
   getStopDay(date: string){
       if(date !== undefined){
           const day = (date.split('T')[0]).split('-');
-          return day[2] + "." + day[1] + "." + day[0]
+          return day[2] + '.' + day[1] + '.' + day[0]
       }
   }
 
-  getStopTime(date: string){
-      if(date !== undefined){
-          const d = date.split('T');
-          return d[1].split('Z')[0] + ' Uhr';
+  getStopTime(date: string) {
+      if (date !== undefined) {
+          let d = date.split('T')[1];
+          d =  d.split('Z')[0];
+          return d.split(':')[0] + ':' + d.split(':')[1] + ' Uhr';
       }
   }
-
-
-
 
 }
