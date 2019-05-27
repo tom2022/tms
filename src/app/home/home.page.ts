@@ -22,16 +22,16 @@ export class HomePage {
 
   calculateProfits() {
       let price = 0;
-      for(let tour of this.loadedTours){
-          price = (tour.price/100) + price;
+      for (let tour of this.loadedTours) {
+          price = (tour.price / 100) + price;
       }
       return price.toFixed(2);
   }
 
-  getStopDay(date: string){
-      if(date !== undefined){
+  getStopDay(date: string) {
+      if (date !== undefined) {
           const day = (date.split('T')[0]).split('-');
-          return day[2] + '.' + day[1] + '.' + day[0]
+          return day[2] + '.' + day[1] + '.' + day[0];
       }
   }
 
