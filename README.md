@@ -4,6 +4,7 @@ Transport Management System (Mockup) - Smart Last Mile Logistics project
 ## Getting Started
 
 Before you begin, make sure your development environment includes Node.js and npm.
+
 To see if Node is installed, run ```node -v``` in a terminal/console window. This should print a version number.
 To get Node.js, go to https://nodejs.org.
 
