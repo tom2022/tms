@@ -27,7 +27,7 @@ Mac/Linux users should run the command with sudo.)
 
 ## Serve the application
 
-Running the TMS Mockup app in a browser is as simple as running the following command in the root folder:
+Running the TMS Mockup app in a browser is as simple as running the following command in the created root folder:
 
 ```sh
 $ ionic serve
