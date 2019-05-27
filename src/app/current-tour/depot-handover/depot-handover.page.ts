@@ -52,22 +52,22 @@ export class DepotHandoverPage implements OnInit {
   }
 
   getDepotInformation(info) {
-      for(let parcel of this.loadedTour.parcelData){
-          if(this.getParcels()[0] === parcel.sscc){
-              for(let stop of this.loadedTour.tourStop){
-                  if(parcel.depotID === stop.id && stop.stopType === 'Depot'){
-                      switch(info){
+      for (let parcel of this.loadedTour.parcelData) {
+          if (this.getParcels()[0] === parcel.sscc) {
+              for (let stop of this.loadedTour.tourStop) {
+                  if (parcel.depotID === stop.id && stop.stopType === 'Depot') {
+                      switch (info) {
                           case 'name': {
-                              return stop.organization
+                              return stop.organization;
                           }
                           case 'street': {
-                              return stop.streetName + ' ' + stop.streetNumber
+                              return stop.streetName + ' ' + stop.streetNumber;
                           }
                           case 'city': {
-                              return stop.zip + ' ' + stop.city
+                              return stop.zip + ' ' + stop.city;
                           }
                           case 'id': {
-                              return stop.id
+                              return stop.id;
                           }
                       }
                   }
@@ -76,32 +76,31 @@ export class DepotHandoverPage implements OnInit {
       }
   }
 
-  getParcels(){
-      return this.parcelIDs.split("%");
+  getParcels() {
+      return this.parcelIDs.split('%');
   }
 
-  getParcelWithoutPrefix(parcel){
-      return parcel.split("sscc:")[1];
+  getParcelWithoutPrefix(parcel) {
+      return parcel.split('sscc:')[1];
   }
 
   updateParcel(e: any, parcel) {
-      if(e.target.checked){
+      if (e.target.checked) {
           this.checkedParcels.push(parcel);
           this.submitButtonDisabled = false;
-      }
-      else {
+      } else {
           this.checkedParcels = this.checkedParcels.filter(s => s !== parcel);
       }
-      if(this.checkedParcels.length !== this.getParcels().length){
+      if (this.checkedParcels.length !== this.getParcels().length) {
           this.submitButtonDisabled = true;
       }
   }
 
   onConfirmParcelHandover() {
       this.toursService.updateCompletedStops(this.loadedTour.tourID, this.getDepotId()).subscribe();
-      //if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
-      if(this.loadedTour.tourID !== '3249898432EXAMPLETOUR'){
-          for(let parcel of this.loadedTour.parcelData){
+      // if tour is mockup example tour, don't send ParcelDepotHandoverConfirmation to CAZ
+      if (this.loadedTour.tourID !== '3249898432EXAMPLETOUR') {
+          for (let parcel of this.loadedTour.parcelData) {
               const today = new Date();
               const d = today.toISOString();
               this.toursService.sendParcelDepotHandoverConfirmation(parcel.sscc, d);
