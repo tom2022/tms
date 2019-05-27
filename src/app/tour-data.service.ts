@@ -22,27 +22,52 @@ export class TourDataService {
         return this._tours.asObservable();
     }
 
-    sendParcelDepotHandoverConfirmation(parcelID, date) {
-        let headers = new HttpHeaders();
-        headers.append('Content-Type','application/json');
-        return this.http.post('https://bpt-lab.org/smile/caz/tms/pick-up-reported', {
-            sscc: parcelID,
-            pickDate: date
-        }, { headers: headers }).subscribe( (response) => {
-            console.log(response);
-        })
-    }
-
-    sendParcelReceiverHandoverConfirmation(parcelID, date) {
-        let headers = new HttpHeaders();
-        headers.append('Content-Type','application/json');
-        return this.http.post('https://bpt-lab.org/smile/caz/tms/delivery-reported', {
-            sscc: parcelID,
-            receiveDate: date
-        }, { headers: headers }).subscribe( (response) => {
-            console.log(response);
-        })
-    }
+    /*const tours_sort = function (tour1, tour2) {
+        const t1 = tour1.tourStartTime.split('T');
+        const t2 = tour2.tourStartTime.split('T');
+        const date1 = t1[0].tourStartTime.split('-');
+        const date2 = t2[0].tourStartTime.split('-');
+        const time1 = t1[1].tourStartTime.split(':');
+        const time2 = t2[1].tourStartTime.split(':');
+        // compare years of tours
+        if (+date1[0] > +date2[0]) {
+            return -1;
+        }
+        if (+date1[0] < +date2[0]) {
+            return 1;
+        }
+        // compare months of tours
+        if (+date1[1] > +date2[1]) {
+            return -1;
+        }
+        if (+date1[1] < +date2[1]) {
+            return 1;
+        }
+        // compare days of tours
+        if (+date1[2] > +date2[2]) {
+            return -1;
+        }
+        if (+date1[2] < +date2[2]) {
+            return 1;
+        }
+        // compare hours of tours
+        if (+time1[0] > +time2[0]) {
+            return -1;
+        }
+        if (+time1[0] < +time2[0]) {
+            return 1;
+        }
+        // compare minutes of tours
+        if (+time1[1] > +time2[1]) {
+            return -1;
+        }
+        if (+time1[1] < +time2[1]) {
+            return 1;
+        }
+        else {
+            return 0;
+        }
+    }*/
 
     fetchTours() {
         return this.http
@@ -96,6 +121,51 @@ export class TourDataService {
                             newParcels,
                         ))
                     }
+                    newTours.sort(function (tour1, tour2) {
+                        const t1 = tour1.tourStartTime.split('T');
+                        const t2 = tour2.tourStartTime.split('T');
+                        const date1 = t1[0].split('-');
+                        const date2 = t2[0].split('-');
+                        const time1 = t1[1].split(':');
+                        const time2 = t2[1].split(':');
+                        // compare years of tours
+                        if (+date1[0] < +date2[0]) {
+                            return -1;
+                        }
+                        if (+date1[0] > +date2[0]) {
+                            return 1;
+                        }
+                        // compare months of tours
+                        if (+date1[1] < +date2[1]) {
+                            return -1;
+                        }
+                        if (+date1[1] > +date2[1]) {
+                            return 1;
+                        }
+                        // compare days of tours
+                        if (+date1[2] < +date2[2]) {
+                            return -1;
+                        }
+                        if (+date1[2] > +date2[2]) {
+                            return 1;
+                        }
+                        // compare hours of tours
+                        if (+time1[0] < +time2[0]) {
+                            return -1;
+                        }
+                        if (+time1[0] > +time2[0]) {
+                            return 1;
+                        }
+                        // compare minutes of tours
+                        if (+time1[1] < +time2[1]) {
+                            return -1;
+                        }
+                        if (+time1[1] > +time2[1]) {
+                            return 1;
+                        } else {
+                            return 0;
+                        }
+                    });
                     return newTours;
                 }),
                 tap(tours => {
@@ -157,5 +227,27 @@ export class TourDataService {
             this._tours.next(updatedTours);
             }
         ))
+    }
+
+    sendParcelDepotHandoverConfirmation(parcelID, date) {
+        let headers = new HttpHeaders();
+        headers.append('Content-Type','application/json');
+        return this.http.post('https://bpt-lab.org/smile/caz/tms/pick-up-reported', {
+            sscc: parcelID,
+            pickDate: date
+        }, { headers: headers }).subscribe( (response) => {
+            console.log(response);
+        })
+    }
+
+    sendParcelReceiverHandoverConfirmation(parcelID, date) {
+        let headers = new HttpHeaders();
+        headers.append('Content-Type','application/json');
+        return this.http.post('https://bpt-lab.org/smile/caz/tms/delivery-reported', {
+            sscc: parcelID,
+            receiveDate: date
+        }, { headers: headers }).subscribe( (response) => {
+            console.log(response);
+        })
     }
 }
