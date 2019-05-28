@@ -10,11 +10,13 @@ To get Node.js, go to https://nodejs.org.
 
 npm is installed with Node.js. To see if an npm client is installed, run ```npm -v``` in a terminal/console window. This should print npm’s version number.
 
-1. Create a folder and cd into this folder. Now you can clone the repository with
+1. Clone the repository with
 
 ```sh
 $ git clone https://github.com/tom2022/tms.git
 ```
+
+and cd into the tms folder.
 
 2. Now, install the Ionic CLI and the Angular CLI globally with
 ```sh
