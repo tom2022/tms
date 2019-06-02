@@ -25,9 +25,6 @@ export class DepotHandoverPage implements OnInit {
       this.parcelIDs = this.route.snapshot.paramMap.get('depotParcelIDs');
       this.tourNumber = +this.route.snapshot.paramMap.get('tourNumber');
       this.checkedParcels = this.getParcels();
-  }
-
-  ionViewWillEnter() {
       this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
   }
 

@@ -19,9 +19,6 @@ export class UpcomingToursPage implements OnInit {
               ) { }
 
   ngOnInit() {
-  }
-
-  ionViewWillEnter() {
       this.toursService.tours.subscribe(tours => this.loadedTours = tours);
   }
 

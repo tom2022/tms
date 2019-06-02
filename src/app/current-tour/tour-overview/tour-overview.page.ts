@@ -23,9 +23,6 @@ export class TourOverviewPage implements OnInit {
 
   ngOnInit() {
       this.tourNumber = +this.route.snapshot.paramMap.get('tourNumber');
-  }
-
-  ionViewWillEnter() {
       this.toursService.tours.subscribe(tours => this.loadedTour = tours[this.tourNumber]);
   }
 
