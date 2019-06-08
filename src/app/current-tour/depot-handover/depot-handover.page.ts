@@ -3,6 +3,7 @@ import {NavController} from "@ionic/angular";
 import {ActivatedRoute} from "@angular/router";
 import {Tour} from "../../tour.model";
 import {TourDataService} from "../../tour-data.service";
+import {NotificationService} from "../../notification.service";
 
 @Component({
   selector: 'app-depot-handover',
@@ -19,7 +20,8 @@ export class DepotHandoverPage implements OnInit {
   constructor(
       private navCtrl: NavController,
       private route: ActivatedRoute,
-      private toursService: TourDataService) { }
+      private toursService: TourDataService,
+      private notificationService: NotificationService) { }
 
   ngOnInit() {
       this.parcelIDs = this.route.snapshot.paramMap.get('depotParcelIDs');
@@ -100,7 +102,7 @@ export class DepotHandoverPage implements OnInit {
           for (let parcel of this.loadedTour.parcelData) {
               const today = new Date();
               const d = today.toISOString();
-              this.toursService.sendParcelDepotHandoverConfirmation(parcel.sscc, d);
+              this.notificationService.sendParcelDepotHandoverConfirmation(parcel.sscc, d);
           }
       }
       this.onBack();

@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {NavController} from "@ionic/angular";
 import {TourDataService} from "../../tour-data.service";
 import {Tour} from "../../tour.model";
+import {NotificationService} from '../../notification.service';
 
 @Component({
   selector: 'app-receiver-handover',
@@ -19,7 +20,8 @@ export class ReceiverHandoverPage implements OnInit {
   constructor(
       private route: ActivatedRoute,
       private navCtrl: NavController,
-      private toursService: TourDataService) { }
+      private toursService: TourDataService,
+      private notificationService: NotificationService) { }
 
   ngOnInit() {
       this.parcelIDs = this.route.snapshot.paramMap.get('parcelID');
@@ -103,7 +105,7 @@ export class ReceiverHandoverPage implements OnInit {
           if (this.loadedTour.tourID !== '3249898432EXAMPLETOUR') {
               const today = new Date();
               const d = today.toISOString();
-              this.toursService.sendParcelReceiverHandoverConfirmation(checkedParcel, d);
+              this.notificationService.sendParcelReceiverHandoverConfirmation(checkedParcel, d);
           }
       }
 
