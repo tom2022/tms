@@ -1,4 +1,4 @@
-# tms
+# TMS
 Transport Management System (Mockup) - Smart Last Mile Logistics project
 
 Click [here](https://github.com/tom2022/tms/wiki) to get to the wiki of the TMS Mockup.
