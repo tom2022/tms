@@ -26,7 +26,7 @@ export class UpcomingToursPage implements OnInit {
       this.navCtrl.navigateBack('/home');
   }
 
-  getTours(){
+  getTours() {
       return this.loadedTours;
   }
 

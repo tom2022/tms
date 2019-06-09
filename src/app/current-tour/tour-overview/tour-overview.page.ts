@@ -34,7 +34,7 @@ export class TourOverviewPage implements OnInit {
       this.iab.create(link, '_system');
     }
 
-  getNumberOfStopsLeft() {
+  getNumberOfStopsCompleted() {
       let counter = 0;
       for (let stop of this.loadedTour.tourStop) {
           if (stop.stopCompleted === false) {
