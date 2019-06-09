@@ -75,7 +75,6 @@ export class TourOverviewPage implements OnInit {
           for (let stop of this.loadedTour.tourStop) {
               if (parcel.depotID === stop.id) {
                   if (stop.stopCompleted === false) {
-                      console.log('true');
                       return false;
                   }
               }
@@ -100,17 +99,15 @@ export class TourOverviewPage implements OnInit {
       this.iab.create(link, '_system');
   }
 
-  getUndeliveredParcelsOfStop(receiverID) {
+  getParcelsOfReceiver(receiverID) {
       let parcels: Parcel[];
       parcels = this.getParcelData(receiverID);
       let parcelString = '';
       for (let parcel of parcels) {
-          if (parcel.isDelivered === false ) {
-              if (parcelString === '') {
-                  parcelString = parcel.sscc;
-              } else {
-                  parcelString = parcelString + '%' + parcel.sscc;
-              }
+          if (parcelString === '') {
+              parcelString = parcel.sscc;
+          } else {
+              parcelString = parcelString + '%' + parcel.sscc;
           }
       }
       return parcelString;

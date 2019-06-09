@@ -63,7 +63,7 @@
                     <ion-button fill="outline" [disabled]="!areParcelsLoaded(stop.id)" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
                       Navigiere
                     </ion-button>
-                    <ion-button fill="outline" [disabled]="!areParcelsLoaded(stop.id)" [routerLink]="['../../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id), tourNumber]" mode="ios">
+                    <ion-button fill="outline" [disabled]="!areParcelsLoaded(stop.id)" [routerLink]="['../../../../../receiver-handover', getParcelsOfReceiver(stop.id), tourNumber]" mode="ios">
                       Übergabe
                     </ion-button>
                   </div>
