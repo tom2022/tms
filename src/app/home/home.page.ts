@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TourDataService} from "../tour-data.service";
 import {Tour} from "../tour.model";
 
@@ -7,12 +7,12 @@ import {Tour} from "../tour.model";
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
   loadedTours: Tour[];
 
   constructor(private toursService: TourDataService) { }
 
-  ionViewWillEnter() {
+  ngOnInit() {
       this.toursService.tours.subscribe(tours => this.loadedTours = tours);
   }
 
