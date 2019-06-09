@@ -54,9 +54,9 @@
                         Zeitfenster: {{getStopTime(stop.startTime)}} - {{getStopTime(stop.endTime)}}
                       </p>
                       <p>
-                        Anzahl der Pakete:{{getParcelData(stop.id).length}}
+                        Anzahl der Pakete:{{getReceiverParcelData(stop.id).length}}
                       </p>
-                      <p *ngFor="let parcel of getParcelData(stop.id)">
+                      <p *ngFor="let parcel of getReceiverParcelData(stop.id)">
                         <ion-text>Paket-ID: {{getParcelWithoutPrefix(parcel.sscc)}} </ion-text>
                       </p>
                       <br>

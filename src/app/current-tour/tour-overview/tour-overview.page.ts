@@ -44,7 +44,7 @@ export class TourOverviewPage implements OnInit {
       return counter;
   }
 
-  getParcelData(receiverID) {
+  getReceiverParcelData(receiverID) {
       const parcels: Parcel[] = [];
       for (let parcel of this.loadedTour.parcelData) {
           if (parcel.receiverID === receiverID) {
@@ -71,7 +71,7 @@ export class TourOverviewPage implements OnInit {
   }
 
   areParcelsLoaded(receiverID) {
-      for (let parcel of this.getParcelData(receiverID)) {
+      for (let parcel of this.getReceiverParcelData(receiverID)) {
           for (let stop of this.loadedTour.tourStop) {
               if (parcel.depotID === stop.id) {
                   if (stop.stopCompleted === false) {
@@ -101,7 +101,7 @@ export class TourOverviewPage implements OnInit {
 
   getParcelsOfReceiver(receiverID) {
       let parcels: Parcel[];
-      parcels = this.getParcelData(receiverID);
+      parcels = this.getReceiverParcelData(receiverID);
       let parcelString = '';
       for (let parcel of parcels) {
           if (parcelString === '') {
