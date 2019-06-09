@@ -12,7 +12,7 @@ export class TestTourService {
         numberOfStops: 7,
         tourStartTime : '2019-06-11T13:50Z[UTC]',
         estimatedTime: 26,
-        price: 653,
+        price: 1153,
         tourStop: [
             {
                 stopType: 'Depot',
