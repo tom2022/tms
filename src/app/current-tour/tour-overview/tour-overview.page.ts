@@ -120,12 +120,10 @@ export class TourOverviewPage implements OnInit {
       parcels = this.getDepotParcelData(depotID);
       let parcelString = '';
       for (let parcel of parcels) {
-          if (parcel.isDelivered === false) {
-              if (parcelString === '') {
-                  parcelString = parcel.sscc;
-              } else {
-                  parcelString = parcelString + '%' + parcel.sscc;
-              }
+          if (parcelString === '') {
+              parcelString = parcel.sscc;
+          } else {
+              parcelString = parcelString + '%' + parcel.sscc;
           }
       }
       return parcelString;
