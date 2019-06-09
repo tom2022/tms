@@ -75,13 +75,14 @@ export class TourOverviewPage implements OnInit {
           for (let stop of this.loadedTour.tourStop) {
               if (parcel.depotID === stop.id) {
                   if (stop.stopCompleted === false) {
-                      return true;
+                      console.log('true');
+                      return false;
                   }
               }
           }
 
       }
-      return false;
+      return true;
   }
 
   getStopTime(date: string) {
