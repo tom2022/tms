@@ -37,11 +37,10 @@ export class TourOverviewPage implements OnInit {
   getNumberOfStopsCompleted() {
       let counter = 0;
       for (let stop of this.loadedTour.tourStop) {
-          if (stop.stopCompleted === false) {
+          if (stop.stopCompleted === true) {
               counter++;
           }
       }
-      counter = this.loadedTour.tourStop.length - counter;
       return counter;
   }
 
