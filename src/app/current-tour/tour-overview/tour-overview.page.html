@@ -41,6 +41,14 @@
                   </ion-card-title>
                 </ion-card-header>
                 <ion-card-content>
+                    <div *ngIf="stop.stopType==='Depot'">
+                        <ion-button fill="outline" color="light" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
+                            Navigiere
+                        </ion-button>
+                        <ion-button fill="outline" color="light" [routerLink]="['../../../../../depot-handover', getParcelsOfDepot(stop.id), tourNumber]" mode="ios">
+                            Abholung
+                        </ion-button>
+                    </div>
                     <div *ngIf="stop.stopType==='Receiver'">
                       <p>
                         Zeitfenster: {{getStopTime(stop.startTime)}} - {{getStopTime(stop.endTime)}}
@@ -57,14 +65,6 @@
                     </ion-button>
                     <ion-button fill="outline" [disabled]="areParcelsLoaded(stop.id)" [routerLink]="['../../../../../receiver-handover', getUndeliveredParcelsOfStop(stop.id), tourNumber]" mode="ios">
                       Übergabe
-                    </ion-button>
-                  </div>
-                  <div *ngIf="stop.stopType==='Depot'">
-                    <ion-button fill="outline" color="light" (click)="getNavigationLink(stop.streetName, stop.streetNumber, stop.zip, stop.city)" mode="ios">
-                      Navigiere
-                    </ion-button>
-                    <ion-button fill="outline" color="light" [routerLink]="['../../../../../depot-handover', getParcelsOfDepot(stop.id), tourNumber]" mode="ios">
-                      Abholung
                     </ion-button>
                   </div>
                 </ion-card-content>
