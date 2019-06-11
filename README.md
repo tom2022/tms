@@ -29,6 +29,11 @@ $ npm install -g @angular/cli
 (Users of Windows should open an Admin command prompt.
 Mac/Linux users should run the command with sudo.)
 
+3. Install all modules listed as dependencies in package.json with
+```sh
+$ npm install 
+```
+
 ## Serving the web application
 
 Running the TMS Mockup app in a browser is as simple as running the following command in the created root folder:
